@@ -1,0 +1,12 @@
+{  
+    "users" : 
+    [
+        {
+            "email" : "ram@gmail.com",
+            "password" : "1234", 
+            "task" : {"t1" :"pending", "t2" : "inProgress"},
+            "profile" : {"status" : "bronze", "level" : 1}
+        }
+    ]
+
+}
