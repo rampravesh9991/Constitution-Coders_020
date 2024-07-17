@@ -17,32 +17,21 @@ input, textarea, select {
     padding: 10px;
     margin-bottom: 20px;
     border: 1px solid #ccc;
+    box-sizing: border-box;
 }
 
-button[type="submit"], button.edit-task {
+button[type="submit"], .edit-task, .delete-task, .sort-task {
     background-color: #4CAF50;
     color: #fff;
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    margin-right: 5px;
 }
 
-button[type="submit"]:hover, button.edit-task:hover {
+button[type="submit"]:hover, .edit-task:hover, .delete-task:hover, .sort-task:hover {
     background-color: #3e8e41;
-}
-
-button.delete-task {
-    background-color: #f44336;
-    color: #fff;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-button.delete-task:hover {
-    background-color: #d32f2f;
 }
 
 #task-list {
@@ -61,10 +50,12 @@ button.delete-task:hover {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
 }
 
-.task:last-child {
-    border-bottom: none;
+.task div {
+    flex: 1;
+    margin-right: 10px;
 }
 
 .priority-low {
@@ -78,4 +69,12 @@ button.delete-task:hover {
 .priority-high {
     color: #ff0000;
     font-weight: bold;
+}
+
+@media (max-width: 600px) {
+    .task div {
+        margin-right: 0;
+        margin-bottom: 10px;
+        flex: 100%;
+    }
 }
