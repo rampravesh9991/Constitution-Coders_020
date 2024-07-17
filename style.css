@@ -1,0 +1,106 @@
+
+
+body{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+nav{
+    width: 100%;
+    margin: auto;
+    background-color: rgb(179, 249, 249);
+    padding: 10px;
+    position: fixed;
+    z-index: 1;
+}
+
+nav div#container{
+    max-width: 1300px;
+    margin: auto;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+nav div#container div img{
+   width: 70px;
+   height: 70px;
+   border-radius: 50%;
+}
+
+nav div#container div ul{
+   display: flex;
+  gap: 50px;
+ }
+
+ nav div#container div ul>li{
+    font-size: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    display: flex;
+    text-decoration: none;
+  }
+
+  
+
+main{
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 700px;
+    margin: 0;
+    background-color: #f4f4f4;
+    
+}
+
+main .container {
+    text-align: center;
+    background-color: rgb(241, 117, 117);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#timer {
+    font-size: 48px;
+    margin-bottom: 20px;
+}
+
+.controls {
+    margin-bottom: 20px;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    margin: 5px;
+    cursor: pointer;
+}
+
+.settings {
+    margin-top: 20px;
+}
+
+label {
+    display: block;
+    margin-top: 10px;
+}
+
+input {
+    width: 50px;
+    text-align: center;
+    margin-top: 5px;
+}
+
+
+header{
+    width: 100%;
+    margin: auto;
+}
+
+header div.container{
+    width: 100%;
+    margin: auto;
+}
