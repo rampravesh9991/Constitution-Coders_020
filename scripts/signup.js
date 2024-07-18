@@ -28,7 +28,7 @@ signupForm.addEventListener('submit', async (event) => {
 
         if (emailExists) {
             window.alert("Email already exists, please login");
-            window.location.href = "login.html";
+            window.location.href = "/htmls/login.html";
         } else {
             const newUser = {
                 email,
@@ -50,7 +50,7 @@ signupForm.addEventListener('submit', async (event) => {
                     throw new Error(`HTTP error! Status: ${res.status}`);
                 }
                 window.alert("User registered successfully!");
-                window.location.href = "login.html";
+                window.location.href = "/htmls/login.html";
             } catch (error) {
                 console.error("Error registering user:", error);
                 window.alert("Failed to register user.");
