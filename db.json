@@ -39,6 +39,14 @@
           "importance": "medium",
           "urgency": "medium",
           "priority": 4
+        },
+        {
+          "name": "dsa",
+          "description": "assignment",
+          "dueDate": "2024-07-19",
+          "importance": "high",
+          "urgency": "medium",
+          "priority": 5
         }
       ],
       "profile": {}
@@ -57,6 +65,13 @@
           "priority": 5
         }
       ],
+      "profile": {}
+    },
+    {
+      "id": "55fb",
+      "email": "vedant@gmail.com",
+      "password": "1234",
+      "tasks": [],
       "profile": {}
     }
   ]

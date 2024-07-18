@@ -49,8 +49,8 @@ signupForm.addEventListener('submit', async (event) => {
                 if (!res.ok) {
                     throw new Error(`HTTP error! Status: ${res.status}`);
                 }
-                window.alert("User registered successfully!");
                 window.location.href = "/htmls/login.html";
+                window.alert("User registered successfully!");
             } catch (error) {
                 console.error("Error registering user:", error);
                 window.alert("Failed to register user.");
