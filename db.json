@@ -42,6 +42,22 @@
         }
       ],
       "profile": {}
+    },
+    {
+      "id": "7801",
+      "email": "ashu@gmail.com",
+      "password": "1234",
+      "tasks": [
+        {
+          "name": "server management",
+          "description": "server works good at night time",
+          "dueDate": "2024-07-22",
+          "importance": "high",
+          "urgency": "medium",
+          "priority": 5
+        }
+      ],
+      "profile": {}
     }
   ]
 }
