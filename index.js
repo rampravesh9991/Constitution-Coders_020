@@ -54,7 +54,7 @@ focusButton.addEventListener("click", () => {
 
   setTimeout(() => {
     document.body.style.backgroundColor = "#a32631e1"; 
-  }, 500);
+  }, 400);
   
 });
 
@@ -68,7 +68,7 @@ shortBreakButton.addEventListener("click", () => {
   time.textContent = `${appendZero(minCount + 1)}:00`;
   setTimeout(() => {
     document.body.style.backgroundColor = "#267ba3d9"; 
-  },500);
+  },400);
   
 });
 
@@ -82,7 +82,7 @@ longBreakButton.addEventListener("click", () => {
   time.textContent = `${minCount + 1}:00`;
   setTimeout(() => {
     document.body.style.backgroundColor = "#26a369e1"; 
-  }, 500);
+  }, 400);
   
 });
 

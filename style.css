@@ -115,3 +115,13 @@ nav div#container div ul{
   .show {
     display: block;
   }
+
+  header{
+    width: 100%;
+    margin: auto;
+  }
+
+  header div{
+    max-width: 1300px;
+    margin: auto;
+  }
