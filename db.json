@@ -1,12 +1,47 @@
-{  
-    "users" : 
-    [
+{
+  "users": [
+    {
+      "email": "ram@gmail.com",
+      "password": "1234",
+      "tasks": [
         {
-            "email" : "ram@gmail.com",
-            "password" : "1234", 
-            "task" : {"t1" :"pending", "t2" : "inProgress"},
-            "profile" : {"status" : "bronze", "level" : 1}
+          "name": "watch anime ",
+          "description": "demon slayer",
+          "dueDate": "2024-07-19",
+          "importance": "low",
+          "urgency": "high",
+          "priority": 4
+        },
+        {
+          "name": "dsa",
+          "description": "complete assignment",
+          "dueDate": "2024-07-20",
+          "importance": "high",
+          "urgency": "high",
+          "priority": 6
         }
-    ]
-
+      ],
+      "profile": {
+        "status": "bronze",
+        "level": 1
+      },
+      "id": "3aa0"
+    },
+    {
+      "id": "a7e7",
+      "email": "vishnu@gmail.com",
+      "password": "1234",
+      "tasks": [
+        {
+          "name": "watch anime ",
+          "description": "dragon ball",
+          "dueDate": "2024-07-19",
+          "importance": "medium",
+          "urgency": "medium",
+          "priority": 4
+        }
+      ],
+      "profile": {}
+    }
+  ]
 }
