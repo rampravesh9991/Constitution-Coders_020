@@ -27,15 +27,32 @@
             <option value="medium">Medium</option>
             <option value="low">Low</option>
         </select>
+        <label for="status">Status:</label>
+        <select id="status">
+            <option value="pending">Pending</option>
+            <option value="in progress">In Progress</option>
+            <option value="completed">Completed</option>
+        </select>
         <button type="submit">Add Task</button>
     </form>
     <div>
         <label for="sort">Sort By:</label>
-        <select id="sort">
+        <select id="sort" onchange="sortTasks()">
             <option value="date">Due Date</option>
             <option value="priority">Priority</option>
         </select>
-        <button onclick="sortTasks()">Sort</button>
+    </div>
+    <div>
+        <label for="filter-status">Filter By Status:</label>
+        <select id="filter-status" onchange="filterTasksByStatus()">
+            <option value="all">All</option>
+            <option value="pending">Pending</option>
+            <option value="in progress">In Progress</option>
+            <option value="completed">Completed</option>
+        </select>
+    </div>
+    <div>
+        <button id="generate-data">Generate Data</button>
     </div>
     <div id="task-list">
         <h2>Task List</h2>

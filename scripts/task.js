@@ -1,6 +1,10 @@
+// /scripts/task.js
+
 const taskForm = document.getElementById('task-form');
 const taskList = document.getElementById('tasks');
 const taskListContainer = document.getElementById('task-list');
+const filterStatus = document.getElementById('filter-status');
+const generateDataBtn = document.getElementById('generate-data');
 const userId = localStorage.getItem('loggedInUserId');
 
 if (!userId) {
@@ -18,6 +22,15 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
+generateDataBtn.addEventListener('click', () => {
+    const days = prompt("Enter the number of days (10-100):");
+    if (days >= 10 && days <= 365) {
+        generateRandomTasks(days);
+    } else {
+        alert("Please enter a valid number of days between 10 and 365.");
+    }
+});
+
 const fetchTasks = async () => {
     try {
         const res = await fetch(url);
@@ -32,6 +45,48 @@ const fetchTasks = async () => {
     }
 };
 
+const generateRandomTasks = async (days) => {
+    const statusOptions = ['pending', 'in progress', 'completed'];
+    const urgencyOptions = ['high', 'medium', 'low'];
+    const importanceOptions = ['high', 'medium', 'low'];
+
+    for (let i = 0; i < days; i++) {
+        const numTasks = Math.floor(Math.random() * 5) + 1;
+        for (let j = 0; j < numTasks; j++) {
+            const task = {
+                name: `Task ${i + 1}-${j + 1}`,
+                description: `Description for task ${i + 1}-${j + 1}`,
+                dueDate: new Date(Date.now() + i * 86400000).toISOString().split('T')[0],
+                importance: importanceOptions[Math.floor(Math.random() * importanceOptions.length)],
+                urgency: urgencyOptions[Math.floor(Math.random() * urgencyOptions.length)],
+                status: statusOptions[Math.floor(Math.random() * statusOptions.length)],
+                priority: calculatePriority(importance, urgency)
+            };
+            tasks.push(task);
+        }
+    }
+    await updateTasks();
+    fetchTasks();
+};
+
+const updateTasks = async () => {
+    try {
+        const res = await fetch(url, {
+            method: "PATCH",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ tasks })
+        });
+
+        if (!res.ok) {
+            throw new Error(`HTTP error! Status: ${res.status}`);
+        }
+    } catch (error) {
+        console.error("Error updating tasks:", error);
+    }
+};
+
 taskForm.addEventListener('submit', async (e) => {
     e.preventDefault();
 
@@ -40,6 +95,7 @@ taskForm.addEventListener('submit', async (e) => {
     const dueDate = document.getElementById('due-date').value;
     const importance = document.getElementById('importance').value;
     const urgency = document.getElementById('urgency').value;
+    const status = document.getElementById('status').value;
 
     const task = {
         name: taskName,
@@ -47,6 +103,7 @@ taskForm.addEventListener('submit', async (e) => {
         dueDate: dueDate,
         importance: importance,
         urgency: urgency,
+        status: status,
         priority: calculatePriority(importance, urgency)
     };
 
@@ -127,7 +184,9 @@ function calculatePriority(importance, urgency) {
 function renderTaskList() {
     taskList.innerHTML = '';
 
-    tasks.forEach((task, index) => {
+    const filteredTasks = filterStatus.value === 'all' ? tasks : tasks.filter(task => task.status === filterStatus.value);
+
+    filteredTasks.forEach((task, index) => {
         const taskHTML = `
             <li class="task">
                 <div>
@@ -135,7 +194,8 @@ function renderTaskList() {
                     <span><i>${task.description}</i></span><br>
                     <span>${task.dueDate}</span><br>
                     <span><b>Importance:</b> ${task.importance}</span><br>
-                    <span><b>Urgency:</b> ${task.urgency}</span>
+                    <span><b>Urgency:</b> ${task.urgency}</span><br>
+                    <span><b>Status:</b> ${task.status}</span>
                 </div>
                 <div>
                     <button class="edit-task" onclick="editTask(${index})">Edit</button>
@@ -155,6 +215,7 @@ function editTask(index) {
     document.getElementById('due-date').value = task.dueDate;
     document.getElementById('importance').value = task.importance;
     document.getElementById('urgency').value = task.urgency;
+    document.getElementById('status').value = task.status;
     editIndex = index;
     taskForm.scrollIntoView({ behavior: 'smooth' });
 }
@@ -168,4 +229,8 @@ function sortTasks() {
     }
     renderTaskList();
     taskListContainer.scrollIntoView({ behavior: 'smooth' });
+}
+
+function filterTasksByStatus() {
+    renderTaskList();
 }
