@@ -1,51 +1,37 @@
-let form = document.querySelector("form");
-form.addEventListener("submit", (event)=>{handleFormSubmit(event)});
-let obj;
-function handleFormSubmit(event){
+const loginForm = document.getElementById('login-form');
+const url = "http://localhost:3000/users";
+
+const fetchData = async (url) => {
+    try {
+        let res = await fetch(url);
+        if (!res.ok) {
+            throw new Error(`HTTP error! Status: ${res.status}`);
+        }
+        let data = await res.json();
+        return data;
+    } catch (error) {
+        console.error("Error fetching data:", error);
+        window.alert("Failed to fetch server data.");
+    }
+};
+
+loginForm.addEventListener('submit', async (event) => {
     event.preventDefault();
-    let email = event.target[0].value;
-    let password = event.target[1].value;
+    const email = document.getElementById('login-email').value;
+    const password = document.getElementById('login-password').value;
 
-    //username and password must not be empty
-    if(email && password){
-        obj = {
-            email,
-            password
-        }
-        console.log(obj);
-        checkServerData(obj);
-    }else{
-        window.alert("please fill all details");
-    }
-}
+    if (email && password) {
+        const users = await fetchData(url);
+        const user = users.find(user => user.email === email && user.password === password);
 
-//check if the username is matching with the server data
-async function checkServerData(obj){
-    try{
-        let response = await fetch(`http://localhost:3000/users`);
-        if(!response.ok){
-            throw new Error("Network error", response.statusText);
-            console.log("hi");
+        if (user) {
+            window.alert("Login successful!");
+            localStorage.setItem('loggedInUserId', user.id);
+            window.location.href = "task.html";
+        } else {
+            window.alert("Invalid email or password");
         }
-        let data = await response.json();
-        console.log(data);
-        let flag = false;
-        for(let i = 0; i < data.length; i++){
-            if(data[i].email == obj.email){
-                if(data[i].password == obj.password){
-                    window.alert("Login successful");
-                }else{
-                    window.alert("Incorrect password")
-                }
-                flag = true;
-                break;
-            }
-        }
-        if(!flag){
-            window.alert("email doesn't exist");
-        }
+    } else {
+        window.alert("Please fill all details");
     }
-    catch(error){
-        console.log("error: ", error);
-    }
-}
+});
