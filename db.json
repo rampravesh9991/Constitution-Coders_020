@@ -1,6 +1,12 @@
 {
-  "users" :
-  [
-    
+  "users": [
+    {
+      "id": "6418",
+      "username": "Ram Pravesh",
+      "email": "ram@gmail.com",
+      "password": "1234",
+      "tasks": [],
+      "profile": {}
+    }
   ]
 }
