@@ -17,8 +17,7 @@ const fetchTasks = async () => {
         }
         const user = await res.json();
         const tasks = user.tasks;
-        const completedTasks = tasks.filter(task => task.status === 'completed');
-        const taskData = processTaskData(completedTasks);
+        const taskData = processTaskData(tasks);
         createLineChart(taskData);
         createBarChart(taskData);
         createHeatMap(taskData);
@@ -28,12 +27,21 @@ const fetchTasks = async () => {
 };
 
 const processTaskData = (tasks) => {
-    const taskData = d3.rollup(
-        tasks,
-        v => v.length,
-        d => d3.timeDay(new Date(d.dueDate))
-    );
-    return Array.from(taskData, ([key, value]) => ({ date: key, count: value }));
+    const startDate = d3.timeDay.offset(d3.min(tasks, d => new Date(d.dueDate)), -1);
+    const endDate = d3.timeDay.offset(d3.max(tasks, d => new Date(d.dueDate)), 1);
+
+    const dateRange = d3.timeDay.range(startDate, endDate);
+    const taskData = Array.from(dateRange, date => {
+        const completedTasks = tasks.filter(task => task.status === 'completed' && d3.timeDay(new Date(task.dueDate)).getTime() === date.getTime()).length;
+        const totalTasks = tasks.filter(task => d3.timeDay(new Date(task.dueDate)).getTime() === date.getTime()).length;
+        return {
+            date: date,
+            completedCount: completedTasks,
+            totalCount: totalTasks
+        };
+    });
+
+    return taskData;
 };
 
 const createLineChart = (data) => {
@@ -42,9 +50,10 @@ const createLineChart = (data) => {
         height = 400 - margin.top - margin.bottom;
 
     const x = d3.scaleTime().domain(d3.extent(data, d => d.date)).range([0, width]);
-    const y = d3.scaleLinear().domain([0, d3.max(data, d => d.count)]).range([height, 0]);
+    const y = d3.scaleLinear().domain([0, d3.max(data, d => d.totalCount)]).range([height, 0]);
 
-    const line = d3.line().x(d => x(d.date)).y(d => y(d.count));
+    const lineCompleted = d3.line().x(d => x(d.date)).y(d => y(d.completedCount));
+    const lineTotal = d3.line().x(d => x(d.date)).y(d => y(d.totalCount));
 
     const svg = d3.select("#line-chart")
         .append("svg")
@@ -65,7 +74,24 @@ const createLineChart = (data) => {
         .attr("fill", "none")
         .attr("stroke", "steelblue")
         .attr("stroke-width", 1.5)
-        .attr("d", line);
+        .attr("d", lineCompleted)
+        .attr("stroke-dasharray", function () { return this.getTotalLength(); })
+        .attr("stroke-dashoffset", function () { return this.getTotalLength(); })
+        .transition()
+        .duration(3000)
+        .attr("stroke-dashoffset", 0);
+
+    svg.append("path")
+        .datum(data)
+        .attr("fill", "none")
+        .attr("stroke", "red")
+        .attr("stroke-width", 1.5)
+        .attr("d", lineTotal)
+        .attr("stroke-dasharray", function () { return this.getTotalLength(); })
+        .attr("stroke-dashoffset", function () { return this.getTotalLength(); })
+        .transition()
+        .duration(3000)
+        .attr("stroke-dashoffset", 0);
 };
 
 const createBarChart = (data) => {
@@ -74,7 +100,7 @@ const createBarChart = (data) => {
         height = 400 - margin.top - margin.bottom;
 
     const x = d3.scaleBand().domain(data.map(d => d.date)).range([0, width]).padding(0.1);
-    const y = d3.scaleLinear().domain([0, d3.max(data, d => d.count)]).range([height, 0]);
+    const y = d3.scaleLinear().domain([0, d3.max(data, d => d.totalCount)]).range([height, 0]);
 
     const svg = d3.select("#bar-chart")
         .append("svg")
@@ -90,16 +116,35 @@ const createBarChart = (data) => {
     svg.append("g")
         .call(d3.axisLeft(y));
 
-    svg.selectAll(".bar")
+    svg.selectAll(".bar-completed")
         .data(data)
         .enter()
         .append("rect")
-        .attr("class", "bar")
+        .attr("class", "bar-completed")
         .attr("x", d => x(d.date))
-        .attr("y", d => y(d.count))
-        .attr("width", x.bandwidth())
-        .attr("height", d => height - y(d.count))
-        .attr("fill", "steelblue");
+        .attr("y", height)
+        .attr("width", x.bandwidth() / 2)
+        .attr("height", 0)
+        .attr("fill", "steelblue")
+        .transition()
+        .duration(1000)
+        .attr("y", d => y(d.completedCount))
+        .attr("height", d => height - y(d.completedCount));
+
+    svg.selectAll(".bar-total")
+        .data(data)
+        .enter()
+        .append("rect")
+        .attr("class", "bar-total")
+        .attr("x", d => x(d.date) + x.bandwidth() / 2)
+        .attr("y", height)
+        .attr("width", x.bandwidth() / 2)
+        .attr("height", 0)
+        .attr("fill", "red")
+        .transition()
+        .duration(1000)
+        .attr("y", d => y(d.totalCount))
+        .attr("height", d => height - y(d.totalCount));
 };
 
 const createHeatMap = (data) => {
@@ -130,7 +175,7 @@ const createHeatMap = (data) => {
         .call(d3.axisLeft(y).tickSize(0))
         .select(".domain").remove();
 
-    const color = d3.scaleSequential(d3.interpolateBlues).domain([0, d3.max(data, d => d.count)]);
+    const color = d3.scaleSequential(d3.interpolateBlues).domain([0, d3.max(data, d => d.totalCount)]);
 
     svg.selectAll()
         .data(data, d => `${d.date.getMonth()}-${d.date.getDate()}`)
@@ -140,7 +185,7 @@ const createHeatMap = (data) => {
         .attr("y", d => y(d.date.getDate()))
         .attr("width", x.bandwidth())
         .attr("height", y.bandwidth())
-        .style("fill", d => color(d.count));
+        .style("fill", d => color(d.totalCount));
 
     svg.selectAll()
         .data(data)
@@ -149,6 +194,6 @@ const createHeatMap = (data) => {
         .attr("x", d => x(monthNames[d.date.getMonth()]) + x.bandwidth() / 2)
         .attr("y", d => y(d.date.getDate()) + y.bandwidth() / 2)
         .attr("text-anchor", "middle")
-        .style("fill", d => d.count > 5 ? "white" : "black")
-        .text(d => d.count);
+        .style("fill", d => d.totalCount > 5 ? "white" : "black")
+        .text(d => d.totalCount);
 };

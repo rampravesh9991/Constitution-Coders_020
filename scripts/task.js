@@ -23,11 +23,11 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 generateDataBtn.addEventListener('click', () => {
-    const days = prompt("Enter the number of days (10-365):");
-    if (days >= 10 && days <= 365) {
+    const days = prompt("Enter the number of days (10-100):");
+    if (days >= 10 && days <= 100) {
         generateRandomTasks(days);
     } else {
-        alert("Please enter a valid number of days between 10 and 365.");
+        alert("Please enter a valid number of days between 10 and 100.");
     }
 });
 
@@ -51,7 +51,7 @@ const generateRandomTasks = async (days) => {
     const importanceOptions = ['high', 'medium', 'low'];
 
     for (let i = 0; i < days; i++) {
-        const numTasks = Math.floor(Math.random() * 10) + 0;
+        const numTasks = Math.floor(Math.random() * 5) + 1;
         for (let j = 0; j < numTasks; j++) {
             const task = {
                 name: `Task ${i + 1}-${j + 1}`,
