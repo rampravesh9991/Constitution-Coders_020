@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(135deg, #3bacd1 0%, #2f8abf 100%);
+            margin: 0;
+            padding: 0;
+        }
+
+        #container {
+            display: flex;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 20px auto;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        #profile {
+            flex: 1;
+            padding: 20px;
+            border-right: 1px solid #ddd;
+            text-align: center;
+            background: #fafafa;
+            position: relative;
+        }
+
+        #profile img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            transition: transform 0.3s ease, border 0.3s ease;
+            border: 4px solid #3bacd1; /* Theme color */
+        }
+
+        #profile img:hover {
+            transform: scale(1.05);
+        }
+
+        #photo-container {
+            margin-top: 10px;
+        }
+
+        #photo-container input[type="file"] {
+            display: none;
+        }
+
+        #photo-container button {
+            background-color: #3bacd1; /* Theme color */
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        #photo-container button:hover {
+            background-color: #339bb9; /* Slightly darker shade of theme color */
+        }
+
+        #profile h2 {
+            margin-top: 0;
+            color: #333;
+            font-weight: 500;
+        }
+
+        #profile .editable {
+            margin-bottom: 20px;
+            text-align: left;
+            position: relative;
+        }
+
+        #profile .editable label {
+            display: block;
+            font-weight: 500;
+            margin-bottom: 5px;
+            color: #555;
+        }
+
+        #profile .editable input,
+        #profile .editable textarea {
+            width: calc(100% - 20px);
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            transition: border-color 0.3s ease;
+            box-sizing: border-box;
+        }
+
+        #profile .editable input:focus,
+        #profile .editable textarea:focus {
+            border-color: #3bacd1; /* Theme color */
+            outline: none;
+        }
+
+        #profile .editable textarea {
+            height: 100px;
+            resize: vertical;
+        }
+
+        #stats {
+            flex: 3;
+            padding: 20px;
+            background: #fafafa;
+        }
+
+        #stats h1 {
+            margin-top: 0;
+            color: #333;
+            animation: fadeIn 1s ease;
+        }
+
+        #stats .chart {
+            margin-bottom: 20px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 10px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            color: #3bacd1; /* Theme color */
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: #339bb9; /* Slightly darker shade of theme color */
+            text-decoration: underline;
+        }
+
+        #edit-button,
+        #save-button {
+            background-color: #3bacd1; /* Theme color */
+            color: #fff;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin: 5px;
+        }
+
+        #edit-button:hover,
+        #save-button:hover {
+            background-color: #339bb9; /* Slightly darker shade of theme color */
+        }
+
+        /* Hide labels and headings by default in non-edit mode */
+        #profile .editable label {
+            display: block;
+        }
+
+        /* Hide labels and headings in edit mode */
+        #profile .editable input[disabled] + label,
+        #profile .editable textarea[disabled] + label {
+            display: none;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            #container {
+                flex-direction: column;
+            }
+
+            #profile {
+                border-right: none;
+                border-bottom: 1px solid #ddd;
+            }
+
+            #stats {
+                border-top: 1px solid #ddd;
+                margin-top: 20px;
+            }
+
+            #profile img {
+                width: 120px;
+                height: 120px;
+            }
+
+            #profile .editable input,
+            #profile .editable textarea {
+                width: calc(100% - 10px);
+            }
+
+            #edit-button,
+            #save-button {
+                width: 100%;
+                padding: 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            #profile img {
+                width: 100px;
+                height: 100px;
+            }
+
+            #profile .editable input,
+            #profile .editable textarea {
+                width: calc(100% - 15px);
+            }
+
+            #edit-button,
+            #save-button {
+                width: 100%;
+                padding: 8px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <div id="profile">
+            <img id="profile-pic" src="https://via.placeholder.com/150" alt="Profile Picture">
+            <div id="photo-container">
+                <input type="file" id="file-input" accept="image/*">
+                <button id="change-photo-button">Change Photo</button>
+            </div>
+            <div class="editable">
+                <label for="name">Name</label>
+                <input type="text" id="name" value="Vedant Johari" disabled>
+            </div>
+            <div class="editable">
+                <label for="bio">Bio</label>
+                <textarea id="bio" disabled>Add a bio. You can @mention other users and organizations to link to them.</textarea>
+            </div>
+            <div class="editable">
+                <label for="pronouns">Pronouns</label>
+                <input type="text" id="pronouns" value="he/him" disabled>
+            </div>
+            <div class="editable">
+                <label for="company">Company</label>
+                <input type="text" id="company" value="Company Name" disabled>
+            </div>
+            <div class="editable">
+                <label for="location">Location</label>
+                <input type="text" id="location" value="Location" disabled>
+            </div>
+            <div class="editable">
+                <label for="website">Website</label>
+                <input type="text" id="website" value="https://www.example.com" disabled>
+            </div>
+            <div class="editable">
+                <label for="linkedin">LinkedIn</label>
+                <input type="text" id="linkedin" value="https://www.linkedin.com" disabled>
+            </div>
+            <div class="social-links">
+                <a id="linkedin-link" href="https://www.linkedin.com" target="_blank">LinkedIn</a>
+                <!-- Add more social links as needed -->
+            </div>
+            <button id="edit-button" onclick="toggleEdit()">Edit</button>
+            <button id="save-button" onclick="saveProfile()" style="display: none;">Save</button>
+        </div>
+        <div id="stats">
+            <h1>Task Visualization</h1>
+            <div id="line-chart" class="chart"></div>
+            <div id="bar-chart" class="chart"></div>
+            <div id="heat-map" class="chart"></div>
+        </div>
+    </div>
+
+    <script src="https://d3js.org/d3.v6.min.js"></script>
+    <script>
+        // Event listener to handle file input change
+        document.getElementById('change-photo-button').addEventListener('click', () => {
+            document.getElementById('file-input').click();
+        });
+
+        // Handle file input change
+        document.getElementById('file-input').addEventListener('change', (event) => {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    document.getElementById('profile-pic').src = e.target.result;
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+        // Function to toggle edit mode
+        function toggleEdit() {
+            const isEditing = document.getElementById('edit-button').style.display === 'none';
+            
+            // Toggle fields between editable and non-editable
+            document.querySelectorAll('#profile .editable input, #profile .editable textarea').forEach(field => {
+                field.disabled = isEditing;
+            });
+
+            // Hide labels and headings in non-edit mode
+            document.querySelectorAll('#profile .editable label').forEach(label => {
+                label.style.display = isEditing ? 'none' : 'block';
+            });
+
+            // Show or hide photo container based on edit mode
+            document.getElementById('photo-container').style.display = isEditing ? 'none' : 'block';
+            
+            // Toggle edit and save button
+            document.getElementById('edit-button').style.display = isEditing ? 'block' : 'none';
+            document.getElementById('save-button').style.display = isEditing ? 'none' : 'block';
+        }
+
+        // Function to save profile changes
+        function saveProfile() {
+            // You can add code here to save profile changes to a server
+            toggleEdit(); // Exit edit mode after saving
+        }
+    </script>
+</body>
+
+</html>
