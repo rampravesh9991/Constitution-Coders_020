@@ -1,12 +1,78 @@
 {
   "users": [
     {
-      "id": "6418",
       "username": "Ram Pravesh",
       "email": "ram@gmail.com",
       "password": "1234",
       "tasks": [],
-      "profile": {}
+      "playlists": [
+        {
+          "name": "melody",
+          "videos": [
+            {
+              "url": "https://www.youtube.com/watch?v=OKhA5vlytaY&list=PLAlOxiX9jNkuTnBTI6y_dG8jDoGZjF_lb"
+            },
+            {
+              "url": "https://www.youtube.com/watch?v=CICqmmpOPs4&list=PLAlOxiX9jNkuTnBTI6y_dG8jDoGZjF_lb&index=2"
+            },
+            {
+              "url": "https://www.youtube.com/watch?v=9HbE64tClZA&list=PLAlOxiX9jNkuTnBTI6y_dG8jDoGZjF_lb&index=3"
+            },
+            {
+              "url": "https://www.youtube.com/watch?v=GtATwKPs52w&list=PLAlOxiX9jNkuTnBTI6y_dG8jDoGZjF_lb&index=7"
+            },
+            {
+              "url": "https://www.youtube.com/watch?v=hWTvOa3vifU&list=PLAlOxiX9jNkuTnBTI6y_dG8jDoGZjF_lb&index=8"
+            },
+            {
+              "url": "https://www.youtube.com/watch?v=ARsNMyj_-SA&list=PLAlOxiX9jNkuTnBTI6y_dG8jDoGZjF_lb&index=9"
+            }
+          ]
+        },
+        {
+          "name": "aggressive",
+          "videos": [
+            {
+              "url": "https://www.youtube.com/watch?v=nNucuV4OGgw&list=RDnNucuV4OGgw&start_radio=1"
+            },
+            {
+              "url": "https://www.youtube.com/watch?v=hUZmn6c3vG4&list=PLAlOxiX9jNkug9HwyBu9s7zjMD4VTwsuE&index=13"
+            }
+          ]
+        }
+      ],
+      "id": 1
+    },
+    {
+      "username": "Vedant",
+      "email": "vedant@gmail.com",
+      "password": "1234",
+      "playlists": [
+        {
+          "name": "rapper",
+          "videos": [
+            {
+              "url": "https://www.youtube.com/watch?v=3xEEAUhkjbI&list=RD3xEEAUhkjbI&start_radio=1"
+            },
+            {
+              "url": "https://www.youtube.com/watch?v=eSZFIXbqmhs&t=248s"
+            }
+          ]
+        },
+        {
+          "name": "energetic",
+          "videos": [
+            {
+              "url": "https://www.youtube.com/shorts/GT-Z3j9wLyg"
+            },
+            {
+              "url": "https://www.youtube.com/watch?v=nSh5bcwVS4k"
+            }
+          ]
+        }
+      ],
+      "tasks": [],
+      "id": 2
     }
   ]
 }

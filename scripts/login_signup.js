@@ -49,8 +49,8 @@ signupForm.addEventListener('submit', async (event) => {
                 username,
                 email,
                 password,
-                tasks: [],
-                profile: {}
+                playlists : [],
+                tasks: []
             };
 
             try {
