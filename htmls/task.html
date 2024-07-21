@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Task Management and Prioritizer</title>
+  <link rel="stylesheet" href="/styles/task.css">
+</head>
+
+<body>
+  <!-- -----------navbar----- -->
+  <nav class="navbar">
+    <div class="logo" onclick="aboutPage()">
+        <img src="../styles/GoalCraft.jpg" alt="Goal Craft Logo">
+    </div>
+    <ul class="nav-links">
+      <li><a href="task.html">Goal Setting</a></li>
+      <li><a href="music.html">Focus Timer</a></li>
+      <li><a href="userProfile.html">My Progress</a></li>
+  </ul>
+    <div class="auth-buttons">
+        <button class="login-btn" onclick="loginPage()">Login</button>
+        <!-- <button class="signup-btn" onclick="signupPage()">Signup</button> -->
+    </div>
+    <div class="menu-toggle" onclick="toggleMenu()">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+    </div>
+</nav>
+  <!-- ---------task manager----- -->
+  <div class="container">
+    <h1>Task Management and Prioritizer</h1>
+    <form id="task-form">
+      <label for="task-name">Task Name:</label>
+      <input type="text" id="task-name" required>
+      <label for="task-description">Task Description:</label>
+      <textarea id="task-description"></textarea>
+      <label for="due-date">Due Date:</label>
+      <input type="date" id="due-date" required>
+      <label for="importance">Importance:</label>
+      <select id="importance">
+        <option value="high">High</option>
+        <option value="medium">Medium</option>
+        <option value="low">Low</option>
+      </select>
+      <label for="urgency">Urgency:</label>
+      <select id="urgency">
+        <option value="high">High</option>
+        <option value="medium">Medium</option>
+        <option value="low">Low</option>
+      </select>
+      <label for="status">Status:</label>
+      <select id="status">
+        <option value="pending">Pending</option>
+        <option value="inProgress">In Progress</option>
+        <option value="completed">Completed</option>
+      </select>
+      <button type="submit">Add Task</button>
+    </form>
+
+    <div class="sort-filter-container">
+      <div>
+        <label for="sort">Sort By:</label>
+        <select id="sort" onchange="sortTasks()">
+          <option value="date">Due Date</option>
+          <option value="priority">Priority</option>
+        </select>
+      </div>
+
+      <div>
+        <label for="filter-status">Filter By Status:</label>
+        <select id="filter-status" onchange="filterTasksByStatus()">
+          <option value="all">All</option>
+          <option value="pending">Pending</option>
+          <option value="inProgress">In Progress</option>
+          <option value="completed">Completed</option>
+        </select>
+      </div>
+    </div>
+
+    <div>
+      <button id="generate-data">Generate Data</button>
+    </div>
+
+    <div class="clear-fix">
+      <div id="pending-tasks" class="task-container">
+        <h3>Pending Tasks</h3>
+        <ul id="pending-tasks-list"></ul>
+      </div>
+      <div id="in-progress-tasks" class="task-container">
+        <h3>In Progress Tasks</h3>
+        <ul id="in-progress-tasks-list"></ul>
+      </div>
+      <div id="completed-tasks" class="task-container">
+        <h3>Completed Tasks</h3>
+        <ul id="completed-tasks-list"></ul>
+      </div>
+    </div>
+  </div>
+  <script src="/scripts/task.js"></script>
+</body>
+
+</html>

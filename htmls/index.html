@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us - ProductivePro</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap">
+  <script src="../scripts/about.js"></script>
+  <link rel="stylesheet" href="../styles/about.css">
+</head>
+
+<body>
+    <!-- -----------navbar----- -->
+    <nav class="navbar">
+      <div class="logo" onclick="aboutPage()">
+          <img src="../styles/GoalCraft.jpg" alt="Goal Craft Logo">
+      </div>
+      <ul class="nav-links">
+        <li><a href="task.html">Goal Setting</a></li>
+        <li><a href="music.html">Focus Timer</a></li>
+        <li><a href="userProfile.html">My Progress</a></li>
+    </ul>
+      <div class="auth-buttons">
+          <button class="login-btn" onclick="loginPage()">Login</button>
+          <!-- <button class="signup-btn" onclick="signupPage()">Signup</button> -->
+      </div>
+      <div class="menu-toggle" onclick="toggleMenu()">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+      </div>
+  </nav>
+  <!-- --------landing page---- -->
+  <div class="hero">
+    <h1>About GoalCraft</h1>
+  </div>
+  <div class="container">
+    <div class="content">
+      <h2>Our Mission</h2>
+      <hr style="color: teal; border: 2px solid;">
+      <p>GoalCraft is on a mission to create the ultimate productivity and time management suite. Our innovative
+        tool combines the best productivity techniques and tools into one powerful application. Imagine a tool that
+        helps you manage your time, prioritize tasks, set goals, stay focused, and seamlessly integrate with your
+        existing calendars.</p>
+      <p>We believe in enhancing productivity and making time management a breeze. Our team is dedicated to developing
+        an application that not only meets your requirements but also offers an intuitive and engaging user experience.
+      </p>
+    </div>
+    <div class="features">
+      <div class="feature">
+        <i class="fas fa-clock"></i>
+        <h3>Pomodoro Technique</h3>
+        <p>Manage your time effectively with our Pomodoro timer, designed to boost your productivity and keep you
+          focused.</p>
+      </div>
+      <div class="feature">
+        <i class="fas fa-tasks"></i>
+        <h3>Task Management</h3>
+        <p>Organize and prioritize your tasks with ease using our comprehensive task management system.</p>
+      </div>
+      <div class="feature">
+        <i class="fas fa-matrix"></i>
+        <h3>Urgent Important Matrix</h3>
+        <p>Identify and prioritize your tasks effectively with our Urgent Important Matrix, gamified for a fun
+          experience.</p>
+      </div>
+      <div class="feature">
+        <i class="fas fa-link"></i>
+        <h3>Link Organizer</h3>
+        <p>Keep all your important links in one place and open them in bulk with our link organizer feature.</p>
+      </div>
+      <div class="feature">
+        <i class="fas fa-bullseye"></i>
+        <h3>Goal Setting</h3>
+        <p>Set, track, and achieve your goals with our goal-setting feature that helps you break down goals into
+          actionable tasks.</p>
+      </div>
+      <div class="feature">
+        <i class="fas fa-music"></i>
+        <h3>Focus Timer</h3>
+        <p>Stay focused with our focus timer that includes meditation and focus music to help you concentrate.</p>
+      </div>
+      <div class="feature">
+        <i class="fas fa-calendar-alt"></i>
+        <h3>Calendar Integration</h3>
+        <p>Seamlessly integrate with your Google Calendar to keep track of your schedule and never miss an important
+          event.</p>
+      </div>
+    </div>
+    <div class="team">
+      <h2>Meet Our Team</h2>
+      <div class="team-members">
+        <div class="team-member">
+          <img
+            src="https://media.istockphoto.com/id/840531052/photo/smiling-businessman-or-worker-standing-in-suit-near-office-building.jpg?s=2048x2048&w=is&k=20&c=jdkJxjidUc9PYYdmygMW8BWDekSn7-dD-Sr4uB3egRA="
+            alt="Team Member 1">
+          <h3>Ram Pravesh Sharma</h3>
+          <p>CEO & Founder</p>
+        </div>
+        <div class="team-member">
+          <img
+            src="https://media.istockphoto.com/id/1342247162/photo/handsome-middle-eastern-guy-businessman-posing-next-to-office-center.jpg?s=2048x2048&w=is&k=20&c=Enbhf2Yu3oFHdxt_sfBg51cLTWi4r_f62vDQvtkBFR4="
+            alt="Team Member 2">
+          <h3>Vishnu</h3>
+          <p>CTO & Co-Founder</p>
+        </div>
+        <div class="team-member">
+          <img
+            src="https://media.istockphoto.com/id/1348033419/photo/cropped-portrait-of-a-handsome-young-businessman-standing-outside-in-the-city-with-his-hands.jpg?s=2048x2048&w=is&k=20&c=-9rCRUScM2R58L-QbCQBMvUuJcXaC3bm0JB4txv2wQc="
+            alt="Team Member 3">
+          <h3>Rohit Priyadarshi</h3>
+          <p>Product Manager</p>
+        </div>
+        <div class="team-member">
+          <img
+            src="https://media.istockphoto.com/id/629293174/photo/confident-in-his-business-acumen.jpg?s=2048x2048&w=is&k=20&c=vpVxbovdoZnKDbKxYz_I5f271eqi5tq5AYqw6JxZoyo="
+            alt="Team Member 4">
+          <h3>Vedant Johari</h3>
+          <p>Lead Developer</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <section class="newsletter-section">
+    <div class="newsletter-content">
+      <h3>Subscribe to Our Newsletter</h3>
+      <p>Stay updated with our latest news, features, and insights.</p>
+      <form action="#" method="post" class="newsletter-form">
+        <input type="email" name="email" placeholder="Enter your email address" required>
+        <button type="submit">Subscribe</button>
+      </form>
+    </div>
+  </section>
+
+  <section class="reach-out-section">
+    <div class="reach-out-content">
+      <h3>Reach Out to Us</h3>
+      <p>We'd love to hear from you! Contact us for any inquiries or feedback.</p>
+      <a href="#" class="contact-button">Contact Us</a>
+    </div>
+  </section>
+
+  <footer>
+    <p>Connect with us:</p>
+    <div class="social-icons">
+      <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+      <a href="#" target="_blank"><i class="fab fa-facebook"></i></a>
+      <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
+    </div>
+    <p>&copy; 2024 ProductivePro. All rights reserved.</p>
+  </footer>
+  <div class="back-to-top" id="backToTop">
+    <i class="fas fa-arrow-up"></i>
+  </div>
+</body>
+</html>

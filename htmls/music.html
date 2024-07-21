@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Playlists</title>
+    <link rel="stylesheet" href="/styles/music.css">
+    <!-- Font Awesome Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
+      rel="stylesheet"/>
+</head>
+<body>
+    <!-- -----------navbar----- -->
+    <nav class="navbar">
+        <div class="logo" onclick="aboutPage()">
+            <img src="../styles/GoalCraft.jpg" alt="Goal Craft Logo">
+        </div>
+        <ul class="nav-links">
+            <li><a href="task.html">Goal Setting</a></li>
+            <li><a href="music.html">Focus Timer</a></li>
+            <li><a href="userProfile.html">My Progress</a></li>
+        </ul>
+        <div class="auth-buttons">
+            <button class="login-btn" onclick="loginPage()">Login</button>
+            <!-- <button class="signup-btn" onclick="signupPage()">Signup</button> -->
+        </div>
+        <div class="menu-toggle" onclick="toggleMenu()">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+    </nav>
+    <!-- ---------music.html---- -->
+    <div class="video-display" id="video-display"></div>
+    <div id="ocean">
+    <div id="box1">
+        <div id="music">
+            <form id="playlist-form">
+                <input type="text" id="playlist-name" placeholder="New Playlist Name" required>
+                <button type="submit">Create Playlist</button>
+            </form>
+            <div class="playlist-selector" id="playlist-selector">
+                <select id="playlists-dropdown">
+                    <option value="">Select a Playlist</option>
+                </select>
+                <div id="add-music-form">
+                    <input type="text" id="music-url" placeholder="Music URL" required>
+                    <button id="add-music-button">Add Music</button>
+                </div>
+            </div>
+            <div id="playlist-videos">
+                <!-- <div class="video-list-item">
+                    <img src="https://img.youtube.com/vi/${videoId}/0.jpg" alt="Video Thumbnail">
+                    <span>${getYouTubeVideoTitle(videoUrl)}</span>
+                </div> -->
+            </div>
+        </div>
+        <div id="box2-pomodoro">
+            <div class="container" id="pomodoro">
+                <div class="section-container">
+                  <button id="focus" class="btn btn-timer btn-focus">Focus</button>
+                  <button id="shortbreak" class="btn btn-shortbreak">Short Break</button>
+                  <button id="longbreak" class="btn btn-longbreak">Long Break</button>
+                </div>
+                <div class="time-btn-container">
+                  <span id="time"></span>
+                  <div class="btn-container">
+                    <button id="btn-start" class="show">Start</button>
+                    <button id="btn-pause" class="hide">Pause</button>
+                    <button id="btn-reset" class="hide">
+                      <i class="fa-solid fa-rotate-right"></i>
+                    </button>
+                  </div>
+                </div>
+            </div>
+        </div>
+        <div id="task"></div>
+    </div>
+    </div>
+    <div class="bottom-bar" id="bottom-bar">
+        <img id="current-thumbnail" src="/styles/GoalCraft.jpg" alt="Current Music Thumbnail">
+        <span id="current-music-name">No music playing</span>
+        <button id="prev-button">Previous</button>
+        <button id="play-pause-button">Play</button>
+        <button id="next-button">Next</button>
+    </div>
+    
+    <script src="/scripts/music.js"></script>
+</body>
+</html>
