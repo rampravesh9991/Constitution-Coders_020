@@ -7,10 +7,8 @@ GoalCraft is a comprehensive productivity and time management suite designed to 
 ## Project Type
 Fullstack
 
-## Deplolyed App
-Frontend: https://deployed-site.whatever
-Backend: https://deployed-site.whatever
-Database: https://deployed-site.whatever
+## Deployed App
+Website : 
 
 ## Directory Structure
 GoalCraft/
@@ -31,10 +29,10 @@ GoalCraft/
 └─ README.md
 
 ## Video Walkthrough of the project
-Attach a very short video walkthough of all of the features [ 1 - 3 minutes ]
+https://youtu.be/ArEz6xd2i9E
 
 ## Video Walkthrough of the codebase
-Attach a very short video walkthough of codebase [ 1 - 5 minutes ]
+https://youtu.be/mD-apDJtE5g
 
 ## Features
 - Task Management: Add, edit, delete, and organize tasks with a drag-and-drop interface.
@@ -82,17 +80,6 @@ Attach a very short video walkthough of codebase [ 1 - 5 minutes ]
 
 
 Include screenshots as necessary.
-
-## Credentials
-Provide user credentials for autheticated pages
-
-## APIs Used
-If your application relies on external APIs, document them and include any necessary links or references.
-
-## API Endpoints
-In case of Backend Applications provide a list of your API endpoints, methods, brief descriptions, and examples of request/response.
-GET /api/items - retrieve all items
-POST /api/items - create a new item
 
 
 ## Technology Stack
