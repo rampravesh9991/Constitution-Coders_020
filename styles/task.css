@@ -1,80 +1,329 @@
+/* ---------navbar start------- */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0;
+}
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 10px;
+  background-color: #3bacd1;
+  color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  position: fixed; /* Fix the navbar to the top */
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000; /* Ensure the navbar is above other content */
+  transition: opacity 0.3s ease;
+}
+.logo{
+  height: 40px;
+  cursor: pointer;
+}
+.logo img {
+  height: 40px; /* Set the height for the logo */
+  width: auto; /* Maintain aspect ratio */
+  border-radius: 50%;
+}
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+.nav-links li {
+  display: inline;
+}
+.nav-links a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.1em;
+  transition: color 0.3s ease;
+}
+.nav-links a:hover {
+  color: #005f73;
+}
+.auth-buttons {
+  display: flex;
+  gap: 10px;
+}
+.auth-buttons .login-btn,
+.auth-buttons .signup-btn {
+  padding: 8px 16px;
+  border: none;
+  cursor: pointer;
+  font-size: 1em;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+.auth-buttons .login-btn {
+  background-color: #fff;
+  color: #004d66;
+}
+.auth-buttons .signup-btn {
+  background-color: #fff;
+  color: #004d66;
+}
+.auth-buttons .signup-btn:hover,
+.auth-buttons .login-btn:hover {
+  background-color: #4fe58b;
+  color: #fff;
+}
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+}
+.menu-toggle .bar {
+  height: 2px;
+  width: 25px;
+  background-color: #fff;
+  margin: 4px 0;
+  transition: transform 0.3s ease;
+}
+.navbar.open .menu-toggle .bar:nth-child(1) {
+  transform: translateY(6px) rotate(45deg);
+}
+.navbar.open .menu-toggle .bar:nth-child(2) {
+  opacity: 0;
+}
+.navbar.open .menu-toggle .bar:nth-child(3) {
+  transform: translateY(-6px) rotate(-45deg);
+}
+@media (max-width: 768px) {
+  .nav-links {
+      display: none;
+      flex-direction: column;
+      gap: 10px;
+      width: 100%;
+      position: absolute;
+      top: 60px;
+      left: 0;
+      background-color: #3bacd1;
+      padding: 10px 0;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  }
+  .nav-links li {
+      text-align: center;
+  }
+  .auth-buttons {
+      display: none;
+      flex-direction: column;
+      gap: 10px;
+      width: 100%;
+      position: absolute;
+      top: 150px;
+      left: 0;
+      background-color: #3bacd1;
+      padding: 10px 0;
+  }
+  .menu-toggle {
+      display: flex;
+  }
+  .navbar.open .nav-links {
+      display: flex;
+  }
+  .navbar.open .auth-buttons {
+      display: flex;
+  }
+}
+
+/* -------------task.css--------- */
 body {
     font-family: Arial, sans-serif;
-    margin: 20px;
-}
-
-#task-form {
-    margin-bottom: 20px;
-}
-
-label {
-    display: block;
-    margin-bottom: 10px;
-}
-
-input, textarea, select {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 20px;
-    border: 1px solid #ccc;
-    box-sizing: border-box;
-}
-
-button[type="submit"], .edit-task, .delete-task, .sort-task {
-    background-color: #4CAF50;
-    color: #fff;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-right: 5px;
-}
-
-button[type="submit"]:hover, .edit-task:hover, .delete-task:hover, .sort-task:hover {
-    background-color: #3e8e41;
-}
-
-#task-list {
-    margin-top: 20px;
-}
-
-#tasks {
-    list-style: none;
-    padding: 0;
+    background-color: #e8eaf6; /* Pale Blue */
     margin: 0;
-}
-
-.task {
-    padding: 10px;
-    border-bottom: 1px solid #ccc;
+    padding: 0;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-    flex-wrap: wrap;
-}
-
-.task div {
-    flex: 1;
-    margin-right: 10px;
-}
-
-.priority-low {
-    color: #999;
-}
-
-.priority-medium {
-    color: #666;
-}
-
-.priority-high {
-    color: #ff0000;
-    font-weight: bold;
-}
-
-@media (max-width: 600px) {
-    .task div {
-        margin-right: 0;
+    min-height: 100vh;
+  }
+  
+  .container {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    max-width: 800px;
+    width: 100%;
+    margin: 20px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    margin-top: 100px;
+  }
+  
+      h1 {
+        text-align: center;
+        color: #3c4e6f;
+        margin-bottom: 20px;
+      }
+  
+      form {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+  
+      form label {
+        width: 100%;
+        font-weight: bold;
+        color: #555;
+      }
+  
+      form input,
+      form select,
+      form textarea {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
         margin-bottom: 10px;
-        flex: 100%;
-    }
-}
+        font-size: 14px;
+      }
+  
+      form button {
+        background-color: #5c6bc0; 
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+        margin-top: 10px;
+      }
+  
+      form button:hover {
+        background-color: #45a049;
+        /* Darker Mint Green */
+      }
+  
+      #generate-data {
+        background-color: #3bacd1;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+        margin-top: 10px;
+        transition: background-color 0.3s ease;
+        margin-bottom: 30px;
+      }
+  
+      #generate-data:hover {
+        background-color: #3493b5;
+      }
+  
+      .task-container {
+        margin-top: 20px;
+        padding: 20px;
+        background: rgba(255, 255, 255, 0.2);
+        /* Light gray with transparency */
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        position: relative;
+        backdrop-filter: blur(10px);
+        /* Blur effect */
+        -webkit-backdrop-filter: blur(10px);
+        /* For Safari */
+      }
+  
+      .task-container.drag-over {
+        background-color: rgba(255, 255, 255, 0.3);
+        /* Slightly more opaque for drag-over state */
+        border: 2px dashed #333;
+      }
+  
+      .task-container .task-item.dragging {
+        opacity: 0.5;
+      }
+  
+      .task-container h3 {
+        color: #3bacd1;
+        margin-bottom: 10px;
+        border-bottom: 2px solid #3bacd1;
+        padding-bottom: 5px;
+      }
+  
+      .task-container ul {
+        list-style: none;
+        padding: 0;
+      }
+  
+      .task-container li {
+        background-color: rgba(255, 255, 255, 0.8);
+        /* Slightly opaque white */
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        margin-bottom: 10px;
+        padding: 10px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 14px;
+        cursor: pointer;
+      }
+  
+      .task-container li strong {
+        display: block;
+        font-size: 16px;
+        margin-bottom: 5px;
+      }
+  
+      .task-container li button {
+        background-color: #e74c3c;
+        color: white;
+        border: none;
+        padding: 5px 10px;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+  
+      .task-container li button.edit-btn {
+        background-color: #f39c12;
+        margin-right: 5px;
+      }
+  
+      .task-container li button.edit-btn:hover {
+        background-color: #e67e22;
+      }
+  
+      .task-container li button.delete-btn:hover {
+        background-color: #c0392b;
+      }
+  
+      .clear-fix {
+        display: flex;
+        justify-content: space-between;
+        gap: 20px;
+      }
+  
+      .sort-filter-container {
+        margin-top: 30px;
+        display: flex;
+        gap: 20px;
+        margin-bottom: 20px;
+      }
+  
+      .sort-filter-container label {
+        margin-right: 10px;
+      }
+  
+      .sort-filter-container select {
+        padding: 5px;
+      }
+  
+      @media (max-width: 600px) {
+        .clear-fix {
+          flex-direction: column;
+        }
+  
+        .sort-filter-container {
+          flex-direction: column;
+          gap: 10px;
+        }
+      }

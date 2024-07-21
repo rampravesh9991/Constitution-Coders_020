@@ -1,3 +1,128 @@
+// Navbar JS
+function toggleMenu() {
+    const navbar = document.querySelector('.navbar');
+    navbar.classList.toggle('open');
+}
+
+function aboutPage() {
+    window.location.href = "/htmls/about.html";
+}
+
+function loginPage() {
+    window.location.href = "/htmls/login_signup.html";
+}
+
+window.addEventListener('scroll', () => {
+    const navbar = document.querySelector('.navbar');
+    const scrollTop = window.scrollY || document.documentElement.scrollTop;
+});
+
+function signupPage() {
+    window.location.href = "/htmls/login_signup.html";
+}
+//user personal data ---------
+
+
+// Event listener to handle file input change
+document.getElementById('change-photo-button').addEventListener('click', () => {
+    document.getElementById('file-input').click();
+});
+
+// Handle file input change
+document.getElementById('file-input').addEventListener('change', (event) => {
+    const file = event.target.files[0];
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+            document.getElementById('profile-pic').src = e.target.result;
+        };
+        reader.readAsDataURL(file);
+    }
+});
+
+// Function to toggle edit mode
+function toggleEdit() {
+    const isEditing = document.getElementById('edit-button').style.display === 'none';
+
+    // Toggle fields between editable and non-editable
+    document.querySelectorAll('#profile .editable input, #profile .editable textarea').forEach(field => {
+        field.disabled = isEditing;
+    });
+
+    // Hide labels and headings in non-edit mode
+    document.querySelectorAll('#profile .editable label').forEach(label => {
+        label.style.display = isEditing ? 'none' : 'block';
+    });
+
+    // Show or hide photo container based on edit mode
+    document.getElementById('photo-container').style.display = isEditing ? 'none' : 'block';
+
+    // Toggle edit and save button
+    document.getElementById('edit-button').style.display = isEditing ? 'block' : 'none';
+    document.getElementById('save-button').style.display = isEditing ? 'none' : 'block';
+}
+
+// Function to save profile changes
+async function saveProfile() {
+    const profileData = {
+        name: document.getElementById('name').value,
+        bio: document.getElementById('bio').value,
+        pronouns: document.getElementById('pronouns').value,
+        company: document.getElementById('company').value,
+        location: document.getElementById('location').value,
+        website: document.getElementById('website').value,
+        linkedin: document.getElementById('linkedin').value,
+        profilePic: document.getElementById('profile-pic').src
+    };
+
+    try {
+        // Fetch the existing user data
+        const response = await fetch(`http://localhost:3000/users/${localStorage.getItem('loggedInUserId')}`);
+        const user = await response.json();
+
+        // Merge profile data into the existing user data
+        const updatedUser = { ...user, profile: profileData };
+
+        // Send the updated user data to the server
+        const saveResponse = await fetch(`http://localhost:3000/users/${localStorage.getItem('loggedInUserId')}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(updatedUser)
+        });
+
+        if (!saveResponse.ok) {
+            throw new Error(`HTTP error! Status: ${saveResponse.status}`);
+        }
+
+        const data = await saveResponse.json();
+        console.log('Success:', data);
+        toggleEdit(); // Exit edit mode after saving
+    } catch (error) {
+        console.error('Error:', error);
+    }
+}
+
+// Load user data on page load
+document.addEventListener('DOMContentLoaded', async () => {
+    try {
+        const response = await fetch(`http://localhost:3000/users/${localStorage.getItem('loggedInUserId')}`);
+        const user = await response.json();
+        document.getElementById('name').value = user.profile.name || '';
+        document.getElementById('bio').value = user.profile.bio || '';
+        document.getElementById('pronouns').value = user.profile.pronouns || '';
+        document.getElementById('company').value = user.profile.company || '';
+        document.getElementById('location').value = user.profile.location || '';
+        document.getElementById('website').value = user.profile.website || '';
+        document.getElementById('linkedin').value = user.profile.linkedin || '';
+        document.getElementById('profile-pic').src = user.profile.profilePic || 'https://via.placeholder.com/150';
+    } catch (error) {
+        console.error('Error loading user data:', error);
+    }
+});
+
+//--------------user progress charts-----
 // /scripts/visualization.js
 
 const userId = localStorage.getItem('loggedInUserId');

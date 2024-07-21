@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <link rel="stylesheet" href="/styles/userProfile.css">
+</head>
+
+<body>
+    <!-- -----------navbar----- -->
+    <nav class="navbar">
+        <div class="logo" onclick="aboutPage()">
+            <img src="../styles/GoalCraft.jpg" alt="Goal Craft Logo">
+        </div>
+        <ul class="nav-links">
+            <li><a href="task.html">Goal Setting</a></li>
+            <li><a href="music.html">Focus Timer</a></li>
+            <li><a href="userProfile.html">My Progress</a></li>
+        </ul>
+        <div class="auth-buttons">
+            <button class="login-btn" onclick="loginPage()">Login</button>
+            <!-- <button class="signup-btn" onclick="signupPage()">Signup</button> -->
+        </div>
+        <div class="menu-toggle" onclick="toggleMenu()">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+    </nav>
+    <!-- ----------user profile-------- -->
+    <div id="container">
+        <div id="profile">
+            <img id="profile-pic" src="https://via.placeholder.com/150" alt="Profile Picture">
+            <div id="photo-container">
+                <input type="file" id="file-input" accept="image/*">
+                <button id="change-photo-button">Change Photo</button>
+            </div>
+            <div class="editable">
+                <label for="name">Name</label>
+                <input type="text" id="name" value="Vedant Johari" disabled>
+            </div>
+            <div class="editable">
+                <label for="bio">Bio</label>
+                <textarea id="bio" disabled>Add a bio. You can @mention other users and organizations to link to them.</textarea>
+            </div>
+            <div class="editable">
+                <label for="pronouns">Pronouns</label>
+                <input type="text" id="pronouns" value="he/him" disabled>
+            </div>
+            <div class="editable">
+                <label for="company">Company</label>
+                <input type="text" id="company" value="Company Name" disabled>
+            </div>
+            <div class="editable">
+                <label for="location">Location</label>
+                <input type="text" id="location" value="Location" disabled>
+            </div>
+            <div class="editable">
+                <label for="website">Website</label>
+                <input type="text" id="website" value="https://www.example.com" disabled>
+            </div>
+            <div class="editable">
+                <label for="linkedin">LinkedIn</label>
+                <input type="text" id="linkedin" value="https://www.linkedin.com" disabled>
+            </div>
+            <div class="social-links">
+                <a id="linkedin-link" href="https://www.linkedin.com" target="_blank">LinkedIn</a>
+                <!-- Add more social links as needed -->
+            </div>
+            <button id="edit-button" onclick="toggleEdit()">Edit</button>
+            <button id="save-button" onclick="saveProfile()" style="display: none;">Save</button>
+        </div>
+        <div id="stats">
+            <h1>Task Visualization</h1>
+            <div id="line-chart" class="chart"></div>
+            <div id="bar-chart" class="chart"></div>
+            <div id="heat-map" class="chart"></div>
+        </div>
+    </div>  
+</body>
+</html>
+<!-- ------ for graphic data using d3 library----- -->
+<script src="https://d3js.org/d3.v6.min.js"></script>
+<script src="/scripts/userProfile.js"></script>
