@@ -72,7 +72,13 @@ Attach a very short video walkthough of codebase [ 1 - 5 minutes ]
 
 
 ## Usage
-Provide instructions and examples on how to use your project.
+  # Example: Adding a task
+  # Navigate to the task management section and 
+  # Fill in the task details and click 'Add Task'
+  # Example: Focus timer
+  # You can create a new playlist and add songs inside it by adding Youtube's URL of  that video.
+  # Then you can play that song on our website and start focusing on your task with the timer on.
+
 
 
 Include screenshots as necessary.
