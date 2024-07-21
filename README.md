@@ -79,7 +79,9 @@ https://youtu.be/mD-apDJtE5g
 
 
 
-Include screenshots as necessary.
+![Screenshot (257)](https://github.com/user-attachments/assets/952489ed-7441-4213-9830-bdd34ed43042)
+![Screenshot (258)](https://github.com/user-attachments/assets/d2a06ca5-8ba1-4ec4-b49a-b9129672feb4)
+
 
 
 ## Technology Stack
