@@ -4,8 +4,8 @@ function toggleMenu() {
     navbar.classList.toggle('open');
 }
 
-function aboutPage() {
-    window.location.href = "/htmls/about.html";
+function indexPage() {
+    window.location.href = "/index.html";
 }
 
 function loginPage() {

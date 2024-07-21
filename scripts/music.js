@@ -3,8 +3,8 @@ function toggleMenu() {
     const navbar = document.querySelector('.navbar');
     navbar.classList.toggle('open');
 }
-function aboutPage(){
-    window.location.href = "/htmls/about.html";
+function indexPage(){
+    window.location.href = "/index.html";
 }
 function loginPage(){
     window.location.href = "/htmls/login_signup.html";
