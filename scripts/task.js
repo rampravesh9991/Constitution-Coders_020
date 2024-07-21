@@ -1,24 +1,44 @@
-// /scripts/task.js
 
+// -----------navbar js--------
+function toggleMenu() {
+    const navbar = document.querySelector('.navbar');
+    navbar.classList.toggle('open');
+}
+function aboutPage(){
+    window.location.href = "/htmls/about.html";
+}
+function loginPage(){
+    window.location.href = "/htmls/login_signup.html";
+}
+window.addEventListener('scroll', () => {
+    const navbar = document.querySelector('.navbar');
+    const scrollTop = window.scrollY || document.documentElement.scrollTop;
+});
+function signupPage(){
+    window.location.href = "/htmls/login_signup.html";
+}
+
+// ---------------task LockManager.js----
 const taskForm = document.getElementById('task-form');
-const taskList = document.getElementById('tasks');
-const taskListContainer = document.getElementById('task-list');
-const filterStatus = document.getElementById('filter-status');
 const generateDataBtn = document.getElementById('generate-data');
+const filterStatus = document.getElementById('filter-status');
+const pendingTasksList = document.getElementById('pending-tasks-list');
+const inProgressTasksList = document.getElementById('in-progress-tasks-list');
+const completedTasksList = document.getElementById('completed-tasks-list');
 const userId = localStorage.getItem('loggedInUserId');
+const url = `http://localhost:3000/users/${userId}`;
+let tasks = [];
+let editIndex = -1;
 
 if (!userId) {
     window.alert("User not logged in. Please log in first.");
     window.location.href = "login.html";
 }
 
-const url = `http://localhost:3000/users/${userId}`;
-let tasks = [];
-let editIndex = -1;
-
 document.addEventListener('DOMContentLoaded', () => {
     if (userId) {
         fetchTasks();
+        setupDragAndDrop();
     }
 });
 
@@ -46,7 +66,7 @@ const fetchTasks = async () => {
 };
 
 const generateRandomTasks = async (days) => {
-    const statusOptions = ['pending', 'in progress', 'completed'];
+    const statusOptions = ['pending', 'inProgress', 'completed'];
     const urgencyOptions = ['high', 'medium', 'low'];
     const importanceOptions = ['high', 'medium', 'low'];
 
@@ -182,29 +202,37 @@ function calculatePriority(importance, urgency) {
 }
 
 function renderTaskList() {
-    taskList.innerHTML = '';
+    pendingTasksList.innerHTML = '';
+    inProgressTasksList.innerHTML = '';
+    completedTasksList.innerHTML = '';
 
     const filteredTasks = filterStatus.value === 'all' ? tasks : tasks.filter(task => task.status === filterStatus.value);
 
     filteredTasks.forEach((task, index) => {
-        const taskHTML = `
-            <li class="task">
-                <div>
-                    <span class="priority-${task.importance}">${task.name}</span><br>
-                    <span><i>${task.description}</i></span><br>
-                    <span>${task.dueDate}</span><br>
-                    <span><b>Importance:</b> ${task.importance}</span><br>
-                    <span><b>Urgency:</b> ${task.urgency}</span><br>
-                    <span><b>Status:</b> ${task.status}</span>
-                </div>
-                <div>
-                    <button class="edit-task" onclick="editTask(${index})">Edit</button>
-                    <button class="delete-task" onclick="deleteTask(${index})">Delete</button>
-                </div>
-            </li>
+        const taskItem = document.createElement('li');
+        taskItem.classList.add('task-item');
+        taskItem.setAttribute('draggable', 'true');
+        taskItem.setAttribute('data-index', index);
+        taskItem.innerHTML = `
+            <div>
+                <strong>${task.name}</strong>
+                <span>${task.description}</span>
+                <br>
+                <small>Due: ${task.dueDate} | Importance: ${task.importance} | Urgency: ${task.urgency}</small>
+            </div>
+            <div>
+                <button class="edit-btn" onclick="editTask(${index})">Edit</button>
+                <button class="delete-btn" onclick="deleteTask(${index})">Delete</button>
+            </div>
         `;
 
-        taskList.innerHTML += taskHTML;
+        if (task.status === 'pending') {
+            pendingTasksList.appendChild(taskItem);
+        } else if (task.status === 'inProgress') {
+            inProgressTasksList.appendChild(taskItem);
+        } else if (task.status === 'completed') {
+            completedTasksList.appendChild(taskItem);
+        }
     });
 }
 
@@ -217,10 +245,9 @@ function editTask(index) {
     document.getElementById('urgency').value = task.urgency;
     document.getElementById('status').value = task.status;
     editIndex = index;
-    taskForm.scrollIntoView({ behavior: 'smooth' });
 }
 
-function sortTasks() {
+const sortTasks = () => {
     const sortBy = document.getElementById('sort').value;
     if (sortBy === 'date') {
         tasks.sort((a, b) => new Date(a.dueDate) - new Date(b.dueDate));
@@ -228,9 +255,61 @@ function sortTasks() {
         tasks.sort((a, b) => b.priority - a.priority);
     }
     renderTaskList();
-    taskListContainer.scrollIntoView({ behavior: 'smooth' });
-}
+};
 
-function filterTasksByStatus() {
+const filterTasksByStatus = () => {
     renderTaskList();
-}
+};
+
+const setupDragAndDrop = () => {
+    const taskContainers = document.querySelectorAll('.task-container');
+
+    taskContainers.forEach(container => {
+        container.addEventListener('dragover', (event) => {
+            event.preventDefault();
+            container.classList.add('drag-over');
+        });
+
+        container.addEventListener('dragleave', () => {
+            container.classList.remove('drag-over');
+        });
+
+        container.addEventListener('drop', async (event) => {
+            event.preventDefault();
+            container.classList.remove('drag-over');
+
+            const taskItem = document.querySelector('.task-item.dragging');
+            if (taskItem) {
+                const index = parseInt(taskItem.getAttribute('data-index'));
+
+                // Mapping container ID to the correct status
+                const statusMapping = {
+                    'pending-tasks': 'pending',
+                    'in-progress-tasks': 'inProgress',
+                    'completed-tasks': 'completed'
+                };
+
+                const newStatus = statusMapping[container.id];
+
+                // Update task status
+                if (tasks[index]) {
+                    tasks[index].status = newStatus;
+                    await updateTasks();
+                    renderTaskList();  // Re-render task lists after status update
+                }
+            }
+        });
+    });
+
+    document.addEventListener('dragstart', (event) => {
+        if (event.target.tagName === 'LI') {
+            event.target.classList.add('dragging');
+        }
+    });
+
+    document.addEventListener('dragend', (event) => {
+        if (event.target.tagName === 'LI') {
+            event.target.classList.remove('dragging');
+        }
+    });
+};

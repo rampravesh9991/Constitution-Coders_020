@@ -22,6 +22,7 @@ body {
 }
 .logo{
   height: 40px;
+  cursor: pointer;
 }
 .logo img {
   height: 40px; /* Set the height for the logo */
@@ -59,8 +60,8 @@ body {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 .auth-buttons .login-btn {
-  background-color: #005f73;
-  color: #fff;
+  background-color: #fff;
+  color: #004d66;
 }
 .auth-buttons .signup-btn {
   background-color: #fff;
@@ -68,7 +69,8 @@ body {
 }
 .auth-buttons .signup-btn:hover,
 .auth-buttons .login-btn:hover {
-  background-color: #e6f9ff;
+  background-color: #4fe58b;
+  color: #fff;
 }
 .menu-toggle {
   display: none;

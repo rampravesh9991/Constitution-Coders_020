@@ -1,34 +1,40 @@
-// -----------navbar js--------
+// Navbar JS
 function toggleMenu() {
     const navbar = document.querySelector('.navbar');
     navbar.classList.toggle('open');
 }
 
+function aboutPage() {
+    window.location.href = "/htmls/about.html";
+}
+
+function loginPage() {
+    window.location.href = "/htmls/login_signup.html";
+}
+
 window.addEventListener('scroll', () => {
     const navbar = document.querySelector('.navbar');
     const scrollTop = window.scrollY || document.documentElement.scrollTop;
-    
-    if (scrollTop > 100) {
-        navbar.style.opacity = '0.8';
-    } else {
-        navbar.style.opacity = '1';
-    }
 });
 
-// --------login signup -----------
+function signupPage() {
+    window.location.href = "/htmls/login_signup.html";
+}
+
+// Login Signup JS
 const sign_in_btn = document.querySelector("#sign-in-btn");
 const sign_up_btn = document.querySelector("#sign-up-btn");
 const container = document.querySelector(".container");
 
 sign_up_btn.addEventListener("click", () => {
-  container.classList.add("sign-up-mode");
+    container.classList.add("sign-up-mode");
 });
 
 sign_in_btn.addEventListener("click", () => {
-  container.classList.remove("sign-up-mode");
+    container.classList.remove("sign-up-mode");
 });
 
-//backend part------------------
+// Backend Part
 const signupForm = document.getElementById('signup-form');
 const loginForm = document.getElementById('login-form');
 const url = "http://localhost:3000/users";
@@ -67,8 +73,30 @@ signupForm.addEventListener('submit', async (event) => {
                 username,
                 email,
                 password,
-                playlists : [],
-                tasks: []
+                playlists: [
+                    {
+                        "name": "Default",
+                        "videos": [
+                            {
+                                "url": "https://www.youtube.com/watch?v=COjEoKQxB6Y&list=PLAlOxiX9jNkug9HwyBu9s7zjMD4VTwsuE&index=7"
+                            },
+                            {
+                                "url": "https://www.youtube.com/watch?v=tmNpR_xQd8E&list=PLAlOxiX9jNkug9HwyBu9s7zjMD4VTwsuE&index=9"
+                            }
+                        ]
+                    }
+                ],
+                tasks: [],
+                profile: {
+                    name: '',
+                    bio: '',
+                    pronouns: '',
+                    company: '',
+                    location: '',
+                    website: '',
+                    linkedin: '',
+                    profilePic: ''
+                }
             };
 
             try {
@@ -83,7 +111,11 @@ signupForm.addEventListener('submit', async (event) => {
                 if (!res.ok) {
                     throw new Error(`HTTP error! Status: ${res.status}`);
                 }
+                const createdUser = await res.json();
                 window.alert("User registered successfully!");
+                localStorage.setItem('loggedInUserId', createdUser.id);
+                localStorage.setItem('loggedInUserEmail', email);
+                localStorage.setItem('loggedInUsername', username);
                 sign_in_btn.click();
             } catch (error) {
                 console.error("Error registering user:", error);
@@ -94,6 +126,8 @@ signupForm.addEventListener('submit', async (event) => {
         window.alert("Please fill all details");
     }
 });
+
+// Handle Login Form Submission
 loginForm.addEventListener('submit', async (event) => {
     event.preventDefault();
     const email = document.getElementById('login-email').value;
@@ -106,6 +140,8 @@ loginForm.addEventListener('submit', async (event) => {
         if (user) {
             window.alert("Login successful!");
             localStorage.setItem('loggedInUserId', user.id);
+            localStorage.setItem('loggedInUserEmail', email);
+            localStorage.setItem('loggedInUsername', user.username);
             window.location.href = "task.html";
         } else {
             window.alert("Invalid email or password");

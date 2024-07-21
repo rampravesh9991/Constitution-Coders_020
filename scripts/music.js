@@ -1,3 +1,22 @@
+// -----------navbar js--------
+function toggleMenu() {
+    const navbar = document.querySelector('.navbar');
+    navbar.classList.toggle('open');
+}
+function aboutPage(){
+    window.location.href = "/htmls/about.html";
+}
+function loginPage(){
+    window.location.href = "/htmls/login_signup.html";
+}
+window.addEventListener('scroll', () => {
+    const navbar = document.querySelector('.navbar');
+    const scrollTop = window.scrollY || document.documentElement.scrollTop;
+});
+function signupPage(){
+    window.location.href = "/htmls/login_signup.html";
+}
+// ----------music.js-------------
 const apiUrl = 'http://localhost:3000/users';
 
 const userId = localStorage.getItem('loggedInUserId');
