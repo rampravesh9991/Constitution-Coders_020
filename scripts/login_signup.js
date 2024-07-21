@@ -1,3 +1,21 @@
+// -----------navbar js--------
+function toggleMenu() {
+    const navbar = document.querySelector('.navbar');
+    navbar.classList.toggle('open');
+}
+
+window.addEventListener('scroll', () => {
+    const navbar = document.querySelector('.navbar');
+    const scrollTop = window.scrollY || document.documentElement.scrollTop;
+    
+    if (scrollTop > 100) {
+        navbar.style.opacity = '0.8';
+    } else {
+        navbar.style.opacity = '1';
+    }
+});
+
+// --------login signup -----------
 const sign_in_btn = document.querySelector("#sign-in-btn");
 const sign_up_btn = document.querySelector("#sign-up-btn");
 const container = document.querySelector(".container");
