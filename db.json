@@ -1,5 +1,314 @@
 {
-  "users" : [
-    
+  "users": [
+    {
+      "username": "Ram Pravesh",
+      "email": "ram@gmail.com",
+      "password": "1234",
+      "playlists": [
+        {
+          "name": "Default",
+          "videos": [
+            {
+              "url": "https://www.youtube.com/watch?v=tmNpR_xQd8E&list=PLAlOxiX9jNkug9HwyBu9s7zjMD4VTwsuE&index=9"
+            },
+            {
+              "url": "https://www.youtube.com/watch?v=eSZFIXbqmhs&t=51s"
+            }
+          ]
+        }
+      ],
+      "tasks": [
+        {
+          "name": "watch anime ",
+          "description": "demon slayer",
+          "dueDate": "2024-07-22",
+          "importance": "high",
+          "urgency": "high",
+          "status": "completed",
+          "priority": 6
+        },
+        {
+          "name": "Task 1-1",
+          "description": "Description for task 1-1",
+          "dueDate": "2024-07-22",
+          "importance": "low",
+          "urgency": "low",
+          "status": "completed",
+          "priority": null
+        },
+        {
+          "name": "Task 1-2",
+          "description": "Description for task 1-2",
+          "dueDate": "2024-07-22",
+          "importance": "high",
+          "urgency": "low",
+          "status": "inProgress",
+          "priority": null
+        },
+        {
+          "name": "Task 1-3",
+          "description": "Description for task 1-3",
+          "dueDate": "2024-07-22",
+          "importance": "medium",
+          "urgency": "medium",
+          "status": "inProgress",
+          "priority": null
+        },
+        {
+          "name": "Task 1-4",
+          "description": "Description for task 1-4",
+          "dueDate": "2024-07-22",
+          "importance": "low",
+          "urgency": "high",
+          "status": "inProgress",
+          "priority": null
+        },
+        {
+          "name": "Task 1-5",
+          "description": "Description for task 1-5",
+          "dueDate": "2024-07-22",
+          "importance": "low",
+          "urgency": "medium",
+          "status": "pending",
+          "priority": null
+        },
+        {
+          "name": "Task 2-1",
+          "description": "Description for task 2-1",
+          "dueDate": "2024-07-23",
+          "importance": "low",
+          "urgency": "high",
+          "status": "pending",
+          "priority": null
+        },
+        {
+          "name": "Task 2-2",
+          "description": "Description for task 2-2",
+          "dueDate": "2024-07-23",
+          "importance": "low",
+          "urgency": "medium",
+          "status": "inProgress",
+          "priority": null
+        },
+        {
+          "name": "Task 2-3",
+          "description": "Description for task 2-3",
+          "dueDate": "2024-07-23",
+          "importance": "low",
+          "urgency": "low",
+          "status": "completed",
+          "priority": null
+        },
+        {
+          "name": "Task 2-4",
+          "description": "Description for task 2-4",
+          "dueDate": "2024-07-23",
+          "importance": "medium",
+          "urgency": "high",
+          "status": "inProgress",
+          "priority": null
+        },
+        {
+          "name": "Task 3-1",
+          "description": "Description for task 3-1",
+          "dueDate": "2024-07-24",
+          "importance": "high",
+          "urgency": "low",
+          "status": "pending",
+          "priority": null
+        },
+        {
+          "name": "Task 3-2",
+          "description": "Description for task 3-2",
+          "dueDate": "2024-07-24",
+          "importance": "low",
+          "urgency": "high",
+          "status": "completed",
+          "priority": null
+        },
+        {
+          "name": "Task 4-1",
+          "description": "Description for task 4-1",
+          "dueDate": "2024-07-25",
+          "importance": "medium",
+          "urgency": "high",
+          "status": "pending",
+          "priority": null
+        },
+        {
+          "name": "Task 4-2",
+          "description": "Description for task 4-2",
+          "dueDate": "2024-07-25",
+          "importance": "medium",
+          "urgency": "low",
+          "status": "inProgress",
+          "priority": null
+        },
+        {
+          "name": "Task 4-3",
+          "description": "Description for task 4-3",
+          "dueDate": "2024-07-25",
+          "importance": "low",
+          "urgency": "medium",
+          "status": "pending",
+          "priority": null
+        },
+        {
+          "name": "Task 5-1",
+          "description": "Description for task 5-1",
+          "dueDate": "2024-07-26",
+          "importance": "high",
+          "urgency": "low",
+          "status": "pending",
+          "priority": null
+        },
+        {
+          "name": "Task 6-1",
+          "description": "Description for task 6-1",
+          "dueDate": "2024-07-27",
+          "importance": "medium",
+          "urgency": "medium",
+          "status": "completed",
+          "priority": null
+        },
+        {
+          "name": "Task 6-2",
+          "description": "Description for task 6-2",
+          "dueDate": "2024-07-27",
+          "importance": "high",
+          "urgency": "low",
+          "status": "pending",
+          "priority": null
+        },
+        {
+          "name": "Task 6-3",
+          "description": "Description for task 6-3",
+          "dueDate": "2024-07-27",
+          "importance": "low",
+          "urgency": "high",
+          "status": "completed",
+          "priority": null
+        },
+        {
+          "name": "Task 7-1",
+          "description": "Description for task 7-1",
+          "dueDate": "2024-07-28",
+          "importance": "high",
+          "urgency": "low",
+          "status": "inProgress",
+          "priority": null
+        },
+        {
+          "name": "Task 7-2",
+          "description": "Description for task 7-2",
+          "dueDate": "2024-07-28",
+          "importance": "medium",
+          "urgency": "low",
+          "status": "completed",
+          "priority": null
+        },
+        {
+          "name": "Task 7-3",
+          "description": "Description for task 7-3",
+          "dueDate": "2024-07-28",
+          "importance": "low",
+          "urgency": "high",
+          "status": "inProgress",
+          "priority": null
+        },
+        {
+          "name": "Task 7-4",
+          "description": "Description for task 7-4",
+          "dueDate": "2024-07-28",
+          "importance": "medium",
+          "urgency": "high",
+          "status": "pending",
+          "priority": null
+        },
+        {
+          "name": "Task 8-1",
+          "description": "Description for task 8-1",
+          "dueDate": "2024-07-29",
+          "importance": "low",
+          "urgency": "medium",
+          "status": "pending",
+          "priority": null
+        },
+        {
+          "name": "Task 9-1",
+          "description": "Description for task 9-1",
+          "dueDate": "2024-07-30",
+          "importance": "high",
+          "urgency": "medium",
+          "status": "completed",
+          "priority": null
+        },
+        {
+          "name": "Task 9-2",
+          "description": "Description for task 9-2",
+          "dueDate": "2024-07-30",
+          "importance": "medium",
+          "urgency": "high",
+          "status": "completed",
+          "priority": null
+        },
+        {
+          "name": "Task 9-3",
+          "description": "Description for task 9-3",
+          "dueDate": "2024-07-30",
+          "importance": "medium",
+          "urgency": "low",
+          "status": "inProgress",
+          "priority": null
+        },
+        {
+          "name": "Task 10-1",
+          "description": "Description for task 10-1",
+          "dueDate": "2024-07-31",
+          "importance": "low",
+          "urgency": "medium",
+          "status": "inProgress",
+          "priority": null
+        },
+        {
+          "name": "Task 10-2",
+          "description": "Description for task 10-2",
+          "dueDate": "2024-07-31",
+          "importance": "low",
+          "urgency": "medium",
+          "status": "completed",
+          "priority": null
+        },
+        {
+          "name": "Task 10-3",
+          "description": "Description for task 10-3",
+          "dueDate": "2024-07-31",
+          "importance": "medium",
+          "urgency": "high",
+          "status": "pending",
+          "priority": null
+        },
+        {
+          "name": "Task 10-4",
+          "description": "Description for task 10-4",
+          "dueDate": "2024-07-31",
+          "importance": "medium",
+          "urgency": "high",
+          "status": "completed",
+          "priority": null
+        }
+      ],
+      "profile": {
+        "name": "",
+        "bio": "",
+        "pronouns": "",
+        "company": "",
+        "location": "",
+        "website": "",
+        "linkedin": "",
+        "profilePic": ""
+      },
+      "id": 1
+    }
   ]
 }
