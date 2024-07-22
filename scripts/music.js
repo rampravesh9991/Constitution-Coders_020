@@ -160,16 +160,56 @@ function addVideoElement(container, videoUrl) {
     container.appendChild(videoDiv);
 }
 
+document.getElementById('playlist-videos').addEventListener('click', function(event) {
+    const target = event.target;
+    if (target.classList.contains('video-list-item')) {
+        const videoUrl = target.dataset.videoUrl;
+        playVideo(videoUrl);
+    } else if (target.classList.contains('delete-btn')) {
+        const videoUrl = target.dataset.videoUrl;
+        const playlistName = document.getElementById('playlists-dropdown').value;
+        deleteVideoFromPlaylist(playlistName, videoUrl, target.parentElement);
+    }
+});
+
 function addVideoListElement(container, videoUrl) {
     const videoId = getYouTubeVideoId(videoUrl);
     const videoListItem = document.createElement('div');
     videoListItem.classList.add('video-list-item');
+    videoListItem.dataset.videoUrl = videoUrl;
     videoListItem.innerHTML = `
         <img src="https://img.youtube.com/vi/${videoId}/0.jpg" alt="Video Thumbnail">
         <span>${getYouTubeVideoTitle(videoUrl)}</span>
+        <button class="delete-btn" data-video-url="${videoUrl}">Delete</button>
     `;
     container.appendChild(videoListItem);
 }
+
+async function deleteVideoFromPlaylist(playlistName, videoUrl, videoElement) {
+    try {
+        const user = await fetchUser(userId);
+        const playlist = user.playlists.find(p => p.name === playlistName);
+        const videoIndex = playlist.videos.findIndex(video => video.url === videoUrl);
+        if (videoIndex > -1) {
+            playlist.videos.splice(videoIndex, 1);
+            const response = await fetch(`${apiUrl}/${userId}`, {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(user)
+            });
+            if (response.ok) {
+                videoElement.remove();
+            } else {
+                console.error('Failed to delete video:', response.statusText);
+            }
+        }
+    } catch (error) {
+        console.error('Error deleting video from playlist:', error);
+    }
+}
+
+// Existing functions and initial fetch call
+
 
 function getYouTubeVideoId(url) {
     const urlObj = new URL(url);
@@ -360,3 +400,108 @@ startBtn.addEventListener("click", () => {
     }, 1000);
   }
 });
+
+
+
+// my diary
+// Assuming userId is already defined and available for notes management
+
+document.getElementById('show-calendar-events').addEventListener('click', fetchGoogleCalendarEvents);
+document.getElementById('notes-dropdown').addEventListener('change', displaySelectedNote);
+
+// Fetch Google Calendar Events
+async function fetchGoogleCalendarEvents() {
+    // Implement Google Calendar API call here
+    // Example placeholder:
+    const events = await getGoogleCalendarEvents();
+    const diaryContent = document.getElementById('diary-content');
+    diaryContent.innerHTML = '<h2>Google Calendar Events</h2>';
+    events.forEach(event => {
+        const eventDiv = document.createElement('div');
+        eventDiv.textContent = `${event.summary} - ${event.start.dateTime}`;
+        diaryContent.appendChild(eventDiv);
+    });
+}
+
+// Placeholder function for Google Calendar API
+async function getGoogleCalendarEvents() {
+    // Implement the API call to fetch events
+    return [
+        { summary: 'Event 1', start: { dateTime: '2024-07-22T10:00:00Z' } },
+        { summary: 'Event 2', start: { dateTime: '2024-07-23T14:00:00Z' } }
+    ];
+}
+
+// Fetch notes from local storage or API
+async function fetchNotes() {
+    const notes = await getUserNotes(userId);
+    populateNotesDropdown(notes);
+}
+
+// Placeholder function to get user notes
+async function getUserNotes(userId) {
+    // Implement the API call to fetch user notes
+    return [
+        { title: 'Note 1', content: 'Content of Note 1' },
+        { title: 'Note 2', content: 'Content of Note 2' }
+    ];
+}
+
+// Populate notes dropdown
+function populateNotesDropdown(notes) {
+    const dropdown = document.getElementById('notes-dropdown');
+    dropdown.innerHTML = '<option value="">Select a Note</option>';
+    notes.forEach(note => {
+        const option = document.createElement('option');
+        option.value = note.title;
+        option.textContent = note.title;
+        dropdown.appendChild(option);
+    });
+}
+
+// Display selected note
+function displaySelectedNote() {
+    const selectedNoteTitle = document.getElementById('notes-dropdown').value;
+    if (selectedNoteTitle) {
+        const note = findNoteByTitle(selectedNoteTitle);
+        displayNoteContent(note);
+    }
+}
+
+// Find note by title (from fetched notes)
+function findNoteByTitle(title) {
+    const notes = [
+        { title: 'Note 1', content: 'Content of Note 1' },
+        { title: 'Note 2', content: 'Content of Note 2' }
+    ]; // This should be replaced by the actual notes fetched
+    return notes.find(note => note.title === title);
+}
+
+// Display note content and make it editable
+function displayNoteContent(note) {
+    const diaryContent = document.getElementById('diary-content');
+    diaryContent.innerHTML = `
+        <h2>${note.title}</h2>
+        <textarea id="note-content">${note.content}</textarea>
+        <button id="save-note-button">Save</button>
+    `;
+    document.getElementById('save-note-button').addEventListener('click', saveNoteContent);
+}
+
+// Save note content
+async function saveNoteContent() {
+    const selectedNoteTitle = document.getElementById('notes-dropdown').value;
+    const newContent = document.getElementById('note-content').value;
+    // Update note content in storage or API
+    await updateUserNote(userId, selectedNoteTitle, newContent);
+    alert('Note saved!');
+}
+
+// Placeholder function to update user note
+async function updateUserNote(userId, title, content) {
+    // Implement the API call to update the note
+    console.log(`Updated note for ${userId}: ${title} - ${content}`);
+}
+
+// Initial fetch of notes to populate dropdown
+fetchNotes();
