@@ -96,7 +96,7 @@ async function fetchPlaylists() {
 function populatePlaylistDropdown(playlists) {
     console.log(playlists);
     const dropdown = document.getElementById('playlists-dropdown');
-    dropdown.innerHTML = '<option value="">Select a Playlist</option>';
+    dropdown.innerHTML = '<option value="">All Playlist</option>';
     playlists.forEach(playlist => {
         const option = document.createElement('option');
         option.value = playlist.name;
