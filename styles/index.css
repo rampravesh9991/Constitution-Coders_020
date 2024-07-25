@@ -90,11 +90,12 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px 30px;
+  padding: 5px 10px;
 }
 
 .navbar-logo img {
-  height: 70px;
+  margin: 5px;
+  height: 40px;
   width: auto;
   border-radius: 10px;
 }
@@ -106,7 +107,7 @@ body {
 }
 
 .navbar-menu a {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   color: #fff;
   text-decoration: none;
   margin: 0 15px;
@@ -150,7 +151,7 @@ body {
 
 /* Hero Section Styles */
 .hero {
-  background: url('./Default_a_serene_and_clean_minimalist_background_with_a_subtle_3.jpg') no-repeat center center/cover;
+  background: url('/img/Default_a_serene_and_clean_minimalist_background_with_a_subtle_3.jpg') no-repeat center center/cover;
   height: 100vh;
   display: flex;
   justify-content: center;
@@ -159,7 +160,7 @@ body {
   color: white;
   padding: 2rem;
   position: relative;
-  margin-top: 70px; /* Adjust to match the height of your navbar */
+  margin-top: 60px; /* Adjust to match the height of your navbar */
   z-index: 0; /* Ensure it's below the navbar */
 }
 

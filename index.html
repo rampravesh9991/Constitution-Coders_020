@@ -1,158 +1,358 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About Us - ProductivePro</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap">
-  <script src="/scripts/index.js.js"></script>
-  <link rel="stylesheet" href="/styles/index.css.css">
+  <title>GoalCraft - Your Ultimate Productivity Suite</title>
+  <link rel="stylesheet" href="/styles/index.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+  <link rel="icon" type="image/x-icon" href="/img/Designer.ico">
 </head>
 
+
 <body>
-    <!-- -----------navbar----- -->
-    <nav class="navbar">
-      <div class="logo" onclick="indexPage()">
-          <img src="../styles/GoalCraft.jpg" alt="Goal Craft Logo">
-      </div>
-      <ul class="nav-links">
-        <li><a href="/htmls/task.html">Goal Setting</a></li>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="navbar-container">
+      <a href="index.html" class="navbar-logo">
+        <img src="/img/Designer.png" alt="ProductivePro Logo">
+      </a>
+      <div class="mobile-menu-icon">☰</div> <!-- Add a mobile menu icon -->
+      <ul class="navbar-menu">
+        <li><a href="/htmls/task.html">Task</a></li>
         <li><a href="/htmls/music.html">Focus Timer</a></li>
         <li><a href="/htmls/userProfile.html">My Progress</a></li>
-    </ul>
-      <div class="auth-buttons">
-          <button class="login-btn" onclick="loginPage()">Login</button>
-          <!-- <button class="signup-btn" onclick="signupPage()">Signup</button> -->
-      </div>
-      <div class="menu-toggle" onclick="toggleMenu()">
-          <span class="bar"></span>
-          <span class="bar"></span>
-          <span class="bar"></span>
-      </div>
+      </ul>
+    </div>
   </nav>
-  <!-- --------landing page---- -->
-  <div class="hero">
-    <h1>About GoalCraft</h1>
+
+
+
+  <!-- Hero Section -->
+  <section class="hero" id="home">
+
+    <div class="hero-container">
+      <h1>Boost Your Productivity with GoalCraft</h1>
+      <p>The ultimate productivity and time management suite.</p>
+      <a href="/htmls/login_signup.html" class="btn">
+        <i class="fa fa-sign-in-alt"></i> Log In
+      </a>
+
+    </div>
+  </section>
+
+  <main>
+    <section id="product-showcase">
+      <h1>Our Current Products</h1>
+      <!-- Current Products -->
+      <section id="task-management" class="feature-section">
+        <div class="feature-content">
+          <h2>Task Management</h2>
+          <p>Organize and prioritize your tasks effortlessly with our advanced Task Management tool.</p>
+          <ul class="feature-list">
+            <li>
+              <div class="icon-container">
+                <i class="icon ion-md-create"></i>
+              </div>
+              <div class="text-container">
+                <strong>Create Tasks:</strong> Easily add new tasks with detailed descriptions and due dates.
+              </div>
+            </li>
+            <li>
+              <div class="icon-container">
+                <i class="icon ion-md-pricetags"></i>
+              </div>
+              <div class="text-container">
+                <strong>Prioritize:</strong> Categorize tasks based on urgency and importance to ensure you focus on
+                what
+                matters most.
+              </div>
+            </li>
+            <li>
+              <div class="icon-container">
+                <i class="icon ion-md-stats"></i>
+              </div>
+              <div class="text-container">
+                <strong>Track Progress:</strong> Monitor the status of each task from creation to completion with our
+                intuitive progress tracking system.
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div class="feature-image">
+          <img src="/img/taskman.jpg" alt="Task Management">
+        </div>
+      </section>
+
+      <!-- Upcoming Innovations -->
+      <section id="pomodoro-technique" class="feature-section">
+        <div class="feature-content">
+          <h2>Pomodoro Technique with Focus Music</h2>
+          <p>Boost your productivity and concentration with our Pomodoro Technique feature.</p>
+          <ul class="feature-list">
+            <li>
+              <div class="icon-container">
+                <i class="icon ion-md-time"></i>
+              </div>
+              <div class="text-container">
+                <strong>Pomodoro Timer:</strong> Work in focused intervals with the Pomodoro timer, taking regular
+                breaks
+                to maintain peak performance.
+              </div>
+            </li>
+            <li>
+              <div class="icon-container">
+                <i class="icon ion-md-musical-note"></i>
+              </div>
+              <div class="text-container">
+                <strong>Custom Playlists:</strong> Create personalized playlists by pasting YouTube video links into the
+                input field. Listen to your favorite focus music while the timer is on.
+              </div>
+            </li>
+            <li>
+              <div class="icon-container">
+                <i class="icon ion-md-headset"></i>
+              </div>
+              <div class="text-container">
+                <strong>Enhanced Concentration:</strong> Stay concentrated and reduce distractions with curated music
+                and
+                structured work periods.
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div class="feature-image">
+          <img src="/img/focusflow.jpg" alt="Pomodoro Technique">
+        </div>
+      </section>
+    </section>
+
+  </main>
+
+
+
+
+  <!-- Features Section -->
+  <section class="features" id="features">
+    <h1>Upcoming Innovations</h1>
+    <div class="feature">
+      <i class="fas fa-th-large feature-icon"></i>
+      <h2>Urgent Important Matrix</h2>
+      <p>Prioritize tasks with gamification elements for better decision making.</p>
+    </div>
+    <div class="feature">
+      <i class="fas fa-link feature-icon"></i>
+      <h2>Link Organizer</h2>
+      <p>Organize and open multiple links simultaneously.</p>
+    </div>
+    <div class="feature">
+      <i class="fas fa-bullseye feature-icon"></i>
+      <h2>Goal Setting</h2>
+      <p>Set and track goals, break them down into actionable tasks.</p>
+    </div>
+    <div class="feature">
+      <i class="fas fa-microphone feature-icon"></i>
+      <h2>Voice Command Integration</h2>
+      <p>Manage tasks, set timers, and perform actions using voice commands through integrations with Google Assistant
+        or Amazon Alexa.</p>
+    </div>
+    <div class="feature">
+      <i class="fas fa-calendar-alt feature-icon"></i>
+      <h2>Google Calendar Integration</h2>
+      <p>Sync tasks and events with Google Calendar.</p>
+    </div>
+  </section>
+
+  <!-- Our Team -->
+
+  <div id="team" class="py-20 bg-gray-50">
+    <div class="container mx-auto px-6 md:px-12 xl:px-32">
+      <div class="mb-16 text-center">
+        <h2 class="mb-4 text-center text-2xl text-gray-900 font-bold md:text-4xl">Meet the GoalCraft Leadership</h2>
+        <p class="text-gray-600 lg:w-8/12 lg:mx-auto">At GoalCraft, we take pride in our exceptional team, composed of
+          some of the brightest minds and most experienced leaders in the industry. Our award-winning technology is
+          backed by a passionate and talented group of professionals who are dedicated to driving innovation and
+          excellence.</p>
+      </div>
+      <div class="grid gap-12 items-center md:grid-cols-3">
+        <div class="space-y-4 text-center">
+          <img class="w-64 h-64 mx-auto object-cover rounded-xl md:w-40 md:h-40 lg:w-64 lg:h-64"
+            src="/img/ram.jpg" alt="woman" loading="lazy"
+            width="640" height="805">
+          <div>
+            <h4 class="text-2xl">Ram Pravesh Sharma</h4>
+            <span class="block text-sm text-gray-500">Backend Developer</span>
+          </div>
+        </div>
+        <div class="space-y-4 text-center">
+          <img class="w-64 h-64 mx-auto object-cover rounded-xl md:w-48 md:h-64 lg:w-64 lg:h-80"
+            src="/img/vedant.jpeg" alt="man" loading="lazy" width="1000"
+            height="667">
+          <div>
+            <h4 class="text-2xl">Vedant Johari</h4>
+            <span class="block text-sm text-gray-500">Frontend Developer</span>
+          </div>
+        </div>
+        <div class="space-y-4 text-center">
+          <img class="w-64 h-64 mx-auto object-cover rounded-xl md:w-40 md:h-40 lg:w-64 lg:h-64"
+            src="/img/vishnu.jpg" alt="woman" loading="lazy"
+            width="1000" height="667">
+          <div>
+            <h4 class="text-2xl">Vishnu</h4>
+            <span class="block text-sm text-gray-500">Chief Designer</span>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="container">
-    <div class="content">
-      <h2>Our Mission</h2>
-      <hr style="color: teal; border: 2px solid;">
-      <p>GoalCraft is on a mission to create the ultimate productivity and time management suite. Our innovative
-        tool combines the best productivity techniques and tools into one powerful application. Imagine a tool that
-        helps you manage your time, prioritize tasks, set goals, stay focused, and seamlessly integrate with your
-        existing calendars.</p>
-      <p>We believe in enhancing productivity and making time management a breeze. Our team is dedicated to developing
-        an application that not only meets your requirements but also offers an intuitive and engaging user experience.
-      </p>
-    </div>
-    <div class="features">
-      <div class="feature">
-        <i class="fas fa-clock"></i>
-        <h3>Pomodoro Technique</h3>
-        <p>Manage your time effectively with our Pomodoro timer, designed to boost your productivity and keep you
-          focused.</p>
+
+
+  <!-- Newsletter Section -->
+  <div id="news">
+    <div class="subscribe">
+      <h2 class="subscribe__title">Let's keep in touch</h2>
+      <p class="subscribe__copy">Subscribe to keep up with fresh news and exciting updates. We promise not to spam
+        you!</p>
+      <div class="form">
+        <input type="email" class="form__email" placeholder="Enter your email address" />
+        <button class="form__button">Send</button>
       </div>
-      <div class="feature">
-        <i class="fas fa-tasks"></i>
-        <h3>Task Management</h3>
-        <p>Organize and prioritize your tasks with ease using our comprehensive task management system.</p>
-      </div>
-      <div class="feature">
-        <i class="fas fa-matrix"></i>
-        <h3>Urgent Important Matrix</h3>
-        <p>Identify and prioritize your tasks effectively with our Urgent Important Matrix, gamified for a fun
-          experience.</p>
-      </div>
-      <div class="feature">
-        <i class="fas fa-link"></i>
-        <h3>Link Organizer</h3>
-        <p>Keep all your important links in one place and open them in bulk with our link organizer feature.</p>
-      </div>
-      <div class="feature">
-        <i class="fas fa-bullseye"></i>
-        <h3>Goal Setting</h3>
-        <p>Set, track, and achieve your goals with our goal-setting feature that helps you break down goals into
-          actionable tasks.</p>
-      </div>
-      <div class="feature">
-        <i class="fas fa-music"></i>
-        <h3>Focus Timer</h3>
-        <p>Stay focused with our focus timer that includes meditation and focus music to help you concentrate.</p>
-      </div>
-      <div class="feature">
-        <i class="fas fa-calendar-alt"></i>
-        <h3>Calendar Integration</h3>
-        <p>Seamlessly integrate with your Google Calendar to keep track of your schedule and never miss an important
-          event.</p>
-      </div>
-    </div>
-    <div class="team">
-      <h2>Meet Our Team</h2>
-      <div class="team-members">
-        <div class="team-member">
-          <img
-            src="https://media.istockphoto.com/id/840531052/photo/smiling-businessman-or-worker-standing-in-suit-near-office-building.jpg?s=2048x2048&w=is&k=20&c=jdkJxjidUc9PYYdmygMW8BWDekSn7-dD-Sr4uB3egRA="
-            alt="Team Member 1">
-          <h3>Ram Pravesh Sharma</h3>
-          <p>CEO & Founder</p>
-        </div>
-        <div class="team-member">
-          <img
-            src="https://media.istockphoto.com/id/1342247162/photo/handsome-middle-eastern-guy-businessman-posing-next-to-office-center.jpg?s=2048x2048&w=is&k=20&c=Enbhf2Yu3oFHdxt_sfBg51cLTWi4r_f62vDQvtkBFR4="
-            alt="Team Member 2">
-          <h3>Vishnu</h3>
-          <p>CTO & Co-Founder</p>
-        </div>
-        <div class="team-member">
-          <img
-            src="https://media.istockphoto.com/id/1348033419/photo/cropped-portrait-of-a-handsome-young-businessman-standing-outside-in-the-city-with-his-hands.jpg?s=2048x2048&w=is&k=20&c=-9rCRUScM2R58L-QbCQBMvUuJcXaC3bm0JB4txv2wQc="
-            alt="Team Member 3">
-          <h3>Rohit Priyadarshi</h3>
-          <p>Product Manager</p>
-        </div>
-        <div class="team-member">
-          <img
-            src="https://media.istockphoto.com/id/629293174/photo/confident-in-his-business-acumen.jpg?s=2048x2048&w=is&k=20&c=vpVxbovdoZnKDbKxYz_I5f271eqi5tq5AYqw6JxZoyo="
-            alt="Team Member 4">
-          <h3>Vedant Johari</h3>
-          <p>Lead Developer</p>
-        </div>
+      <div class="notice">
+        <input type="checkbox">
+        <span class="notice__copy">I agree to my email address being stored and uses to recieve monthly
+          newsletter.</span>
       </div>
     </div>
   </div>
-  <section class="newsletter-section">
-    <div class="newsletter-content">
-      <h3>Subscribe to Our Newsletter</h3>
-      <p>Stay updated with our latest news, features, and insights.</p>
-      <form action="#" method="post" class="newsletter-form">
-        <input type="email" name="email" placeholder="Enter your email address" required>
-        <button type="submit">Subscribe</button>
+
+  <!-- Contact Us Section -->
+
+  <div class="contact_us_6">
+    <div class="responsive-container-block container">
+      <form class="form-box">
+        <div class="container-block form-wrapper">
+          <div class="mob-text">
+            <p class="text-blk contactus-head">
+              Get in Touch
+            </p>
+            <p class="text-blk contactus-subhead">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Felis diam lectus sapien.
+            </p>
+          </div>
+          <div class="responsive-container-block" id="i2cbk">
+            <div class="responsive-cell-block wk-tab-12 wk-mobile-12 wk-desk-12 wk-ipadp-12" id="i10mt-3">
+              <p class="text-blk input-title">
+                FIRST NAME
+              </p>
+              <input class="input" id="ijowk-3" name="FirstName" placeholder="Please enter first name...">
+            </div>
+            <div class="responsive-cell-block wk-tab-12 wk-mobile-12 wk-desk-12 wk-ipadp-12" id="ip1yp">
+              <p class="text-blk input-title">
+                EMAIL
+              </p>
+              <input class="input" id="ipmgh-3" name="Email" placeholder="Please enter email...">
+            </div>
+            <div class="responsive-cell-block wk-tab-12 wk-mobile-12 wk-desk-12 wk-ipadp-12" id="ih9wi">
+              <p class="text-blk input-title">
+                PHONE NUMBER
+              </p>
+              <input class="input" id="imgis-3" name="PhoneNumber" placeholder="Please enter phone number...">
+            </div>
+            <div class="responsive-cell-block wk-tab-12 wk-mobile-12 wk-desk-12 wk-ipadp-12" id="i634i-3">
+              <p class="text-blk input-title">
+                WHAT DO YOU HAVE IN MIND ?
+              </p>
+              <textarea class="textinput" id="i5vyy-3" placeholder="Please enter query..."></textarea>
+            </div>
+          </div>
+          <button class="submit-btn" id="w-c-s-bgc_p-1-dm-id-2">
+            Submit
+          </button>
+        </div>
       </form>
+      <div class="responsive-cell-block wk-desk-7 wk-ipadp-12 wk-tab-12 wk-mobile-12" id="i772w">
+        <div class="map-part">
+          <p class="text-blk map-contactus-head" id="w-c-s-fc_p-1-dm-id">
+            Reach us at
+          </p>
+          <p class="text-blk map-contactus-subhead">
+            1234, Palm Street, 5th Main Road, Indiranagar,
+            Bangalore, Karnataka,
+            India - 560038
+          </p>
+          <div class="social-media-links mob">
+            <a class="social-icon-link" href="#" id="ix94i-2-2">
+              <img class="link-img image-block"
+                src="https://workik-widget-assets.s3.amazonaws.com/Footer1-83/v1/images/Icon-twitter.png">
+            </a>
+            <a class="social-icon-link" href="#" id="itixd">
+              <img class="link-img image-block"
+                src="https://workik-widget-assets.s3.amazonaws.com/Footer1-83/v1/images/Icon-facebook.png">
+            </a>
+            <a class="social-icon-link" href="#" id="izxvt">
+              <img class="link-img image-block"
+                src="https://workik-widget-assets.s3.amazonaws.com/Footer1-83/v1/images/Icon-google.png">
+            </a>
+            <a class="social-icon-link" href="#" id="izldf-2-2">
+              <img class="link-img image-block"
+                src="https://workik-widget-assets.s3.amazonaws.com/Footer1-83/v1/images/Icon-instagram.png">
+            </a>
+          </div>
+          <div class="map-box container-block">
+          </div>
+        </div>
+      </div>
     </div>
-  </section>
-
-  <section class="reach-out-section">
-    <div class="reach-out-content">
-      <h3>Reach Out to Us</h3>
-      <p>We'd love to hear from you! Contact us for any inquiries or feedback.</p>
-      <a href="#" class="contact-button">Contact Us</a>
-    </div>
-  </section>
-
-  <footer>
-    <p>Connect with us:</p>
-    <div class="social-icons">
-      <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
-      <a href="#" target="_blank"><i class="fab fa-facebook"></i></a>
-      <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
-      <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
-    </div>
-    <p>&copy; 2024 ProductivePro. All rights reserved.</p>
-  </footer>
-  <div class="back-to-top" id="backToTop">
-    <i class="fas fa-arrow-up"></i>
   </div>
-</body>
-</html>
+
+  <!-- Footer Section -->
+  <html>
+
+  <body>
+    <footer class="footer">
+      <div class="waves">
+        <div class="wave" id="wave1"></div>
+        <div class="wave" id="wave2"></div>
+        <div class="wave" id="wave3"></div>
+        <div class="wave" id="wave4"></div>
+      </div>
+      <ul class="social-icon">
+        <li class="social-icon__item"><a class="social-icon__link" href="#">
+            <ion-icon name="logo-facebook"></ion-icon>
+          </a></li>
+        <li class="social-icon__item"><a class="social-icon__link" href="#">
+            <ion-icon name="logo-twitter"></ion-icon>
+          </a></li>
+        <li class="social-icon__item"><a class="social-icon__link" href="#">
+            <ion-icon name="logo-linkedin"></ion-icon>
+          </a></li>
+        <li class="social-icon__item"><a class="social-icon__link" href="#">
+            <ion-icon name="logo-instagram"></ion-icon>
+          </a></li>
+      </ul>
+      <ul class="menu">
+        <li class="menu__item"><a class="menu__link" href="#">Home</a></li>
+        <li class="menu__item"><a class="menu__link" href="#">About</a></li>
+        <li class="menu__item"><a class="menu__link" href="#">Services</a></li>
+        <li class="menu__item"><a class="menu__link" href="#">Team</a></li>
+        <li class="menu__item"><a class="menu__link" href="#">Contact</a></li>
+
+      </ul>
+      <p>&copy;2024 GoalCraft | All Rights Reserved</p>
+    </footer>
+    <!-- Back to Top Button -->
+    <button id="backToTop" class="back-to-top">
+      <i class="fas fa-arrow-up"></i> <!-- FontAwesome arrow icon -->
+    </button>
+
+
+
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <script src="/scripts/index.js"></script>
+
+  </body>
+  </html>

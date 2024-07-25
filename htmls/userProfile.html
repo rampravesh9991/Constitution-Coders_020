@@ -6,29 +6,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Profile</title>
     <link rel="stylesheet" href="/styles/userProfile.css">
+    <link rel="icon" type="image/x-icon" href="/img/Designer.ico">
 </head>
 
 <body>
-    <!-- -----------navbar----- -->
-    <nav class="navbar">
-        <div class="logo" onclick="indexPage()">
-            <img src="../styles/GoalCraft.jpg" alt="Goal Craft Logo">
-        </div>
-        <ul class="nav-links">
-            <li><a href="task.html">Goal Setting</a></li>
-            <li><a href="music.html">Focus Timer</a></li>
-            <li><a href="userProfile.html">My Progress</a></li>
-        </ul>
-        <div class="auth-buttons">
-            <button class="login-btn" onclick="loginPage()">Login</button>
-            <!-- <button class="signup-btn" onclick="signupPage()">Signup</button> -->
-        </div>
-        <div class="menu-toggle" onclick="toggleMenu()">
-            <span class="bar"></span>
-            <span class="bar"></span>
-            <span class="bar"></span>
-        </div>
-    </nav>
+    <!-- Navbar -->
+  <nav class="navbar">
+    <div class="navbar-container">
+      <a href="/index.html" class="navbar-logo">
+        <img src="/img/Designer.png" alt="ProductivePro Logo">
+      </a>
+      <div class="mobile-menu-icon">☰</div> <!-- Add a mobile menu icon -->
+      <ul class="navbar-menu">
+        <li><a href="task.html">Task</a></li>
+        <li><a href="music.html">Focus Timer</a></li>
+        <li><a href="userProfile.html">My Progress</a></li>
+      </ul>
+    </div>
+  </nav>
     <!-- ----------user profile-------- -->
     <div id="container">
         <div id="profile">
