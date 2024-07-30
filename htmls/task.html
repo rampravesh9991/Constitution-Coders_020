@@ -11,55 +11,61 @@
 <body>
   <!-- -----------navbar----- -->
   <nav class="navbar">
-    <div class="logo" onclick="indexPage()">
-        <img src="../styles/GoalCraft.jpg" alt="Goal Craft Logo">
-    </div>
-    <ul class="nav-links">
-      <li><a href="task.html">Goal Setting</a></li>
-      <li><a href="music.html">Focus Timer</a></li>
-      <li><a href="userProfile.html">My Progress</a></li>
-  </ul>
-    <div class="auth-buttons">
-        <button class="login-btn" onclick="loginPage()">Login</button>
-        <!-- <button class="signup-btn" onclick="signupPage()">Signup</button> -->
-    </div>
-    <div class="menu-toggle" onclick="toggleMenu()">
-        <span class="bar"></span>
-        <span class="bar"></span>
-        <span class="bar"></span>
-    </div>
+      <div class="container">
+        <div class="logo" onclick="indexPage()">
+          <img src="../styles/GoalCraft.jpg" alt="Goal Craft Logo">
+      </div>
+      <ul class="nav-links">
+        <li><a href="task.html">Goal Setting</a></li>
+        <li><a href="music.html">Focus Timer</a></li>
+        <li><a href="userProfile.html">My Progress</a></li>
+    </ul>
+      <div class="auth-buttons">
+          <button class="login-btn" onclick="loginPage()">Login</button>
+          <!-- <button class="signup-btn" onclick="signupPage()">Signup</button> -->
+      </div>
+      <div class="menu-toggle" onclick="toggleMenu()">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+      </div>
+      </div>
 </nav>
   <!-- ---------task manager----- -->
-  <div class="container">
+
+
+  <header>
+      <div class="container">
     <h1>Task Management and Prioritizer</h1>
+
     <form id="task-form">
-      <label for="task-name">Task Name:</label>
-      <input type="text" id="task-name" required>
-      <label for="task-description">Task Description:</label>
-      <textarea id="task-description"></textarea>
-      <label for="due-date">Due Date:</label>
+      <input type="text" id="task-name" placeholder="Task Name : " required>
+      <textarea id="task-description" placeholder="Task Description :"></textarea>
       <input type="date" id="due-date" required>
-      <label for="importance">Importance:</label>
       <select id="importance">
+        <option value="Importance:">Importance :</option>
         <option value="high">High</option>
         <option value="medium">Medium</option>
         <option value="low">Low</option>
       </select>
-      <label for="urgency">Urgency:</label>
       <select id="urgency">
+        <option value="Urgency:">Urgency : </option>
         <option value="high">High</option>
         <option value="medium">Medium</option>
         <option value="low">Low</option>
       </select>
-      <label for="status">Status:</label>
       <select id="status">
+        <option value="Status:">Status :</option>
         <option value="pending">Pending</option>
         <option value="inProgress">In Progress</option>
         <option value="completed">Completed</option>
       </select>
-      <button type="submit">Add Task</button>
+      <button class="btn" type="submit">Add Task</button>
     </form>
 
+
+  
+<hr>
     <div class="sort-filter-container">
       <div>
         <label for="sort">Sort By:</label>
@@ -80,7 +86,7 @@
       </div>
     </div>
 
-    <div>
+    <div class="generateData">
       <button id="generate-data">Generate Data</button>
     </div>
 
@@ -99,6 +105,33 @@
       </div>
     </div>
   </div>
+  </header>
+
+
+  <script>
+
+document.getElementById('add-task-btn').addEventListener('click', function() {
+    console.log('Add Task Button Clicked'); // Check if this is logged
+    document.getElementById('task-form-container').classList.remove('hidden');
+
+    document.getElementById('add-task-btn').classList.add('hidden');
+});
+
+document.getElementById('task-form').addEventListener('submit', function(event) {
+    event.preventDefault();
+    console.log('Task Form Submitted'); // Check if this is logged
+
+    document.getElementById('task-form-container').classList.add('hidden');
+    document.getElementById('add-task-btn').classList.remove('hidden');
+
+    // Clear the form
+    document.getElementById('task-form').reset();
+
+
+});
+
+
+</script>
   <script src="/scripts/task.js"></script>
 </body>
 

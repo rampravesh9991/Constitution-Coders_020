@@ -1,6 +1,44 @@
 {
-  "users" :
-  [
-    
+  "users": [
+    {
+      "username": "vishnu",
+      "email": "vishnu@gmail.com",
+      "password": "1234",
+      "playlists": [
+        {
+          "name": "Default",
+          "videos": [
+            {
+              "url": "https://www.youtube.com/watch?v=COjEoKQxB6Y&list=PLAlOxiX9jNkug9HwyBu9s7zjMD4VTwsuE&index=7"
+            },
+            {
+              "url": "https://www.youtube.com/watch?v=tmNpR_xQd8E&list=PLAlOxiX9jNkug9HwyBu9s7zjMD4VTwsuE&index=9"
+            }
+          ]
+        }
+      ],
+      "tasks": [
+        {
+          "name": "dsa",
+          "description": "sad",
+          "dueDate": "2024-07-30",
+          "importance": "low",
+          "urgency": "low",
+          "status": "pending",
+          "priority": 2
+        }
+      ],
+      "profile": {
+        "name": "",
+        "bio": "",
+        "pronouns": "",
+        "company": "",
+        "location": "",
+        "website": "",
+        "linkedin": "",
+        "profilePic": ""
+      },
+      "id": 1
+    }
   ]
 }

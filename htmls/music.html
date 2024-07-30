@@ -6,6 +6,7 @@
     <title>Music Playlists</title>
     <link rel="stylesheet" href="/styles/music.css">
     <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
@@ -13,18 +14,22 @@
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
       rel="stylesheet"/>
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
 </head>
 <body>
     <!-- -----------navbar----- -->
     <nav class="navbar">
-        <div class="logo" onclick="indexPage()">
+        <div class="container">
+          <div class="logo" onclick="indexPage()">
             <img src="../styles/GoalCraft.jpg" alt="Goal Craft Logo">
         </div>
         <ul class="nav-links">
-            <li><a href="task.html">Goal Setting</a></li>
-            <li><a href="music.html">Focus Timer</a></li>
-            <li><a href="userProfile.html">My Progress</a></li>
-        </ul>
+          <li><a href="task.html">Goal Setting</a></li>
+          <li><a href="music.html">Focus Timer</a></li>
+          <li><a href="userProfile.html">My Progress</a></li>
+      </ul>
         <div class="auth-buttons">
             <button class="login-btn" onclick="loginPage()">Login</button>
             <!-- <button class="signup-btn" onclick="signupPage()">Signup</button> -->
@@ -34,7 +39,8 @@
             <span class="bar"></span>
             <span class="bar"></span>
         </div>
-    </nav>
+        </div>
+  </nav>
     <!-- ---------music.html---- -->
     <div class="video-display" id="video-display"></div>
     <div id="ocean">
@@ -49,7 +55,7 @@
                     <option value="">Select a Playlist</option>
                 </select>
                 <div id="add-music-form">
-                    <input type="text" id="music-url" placeholder="Music URL" required>
+                    <input type="text" id="music-url" placeholder="URL" required>
                     <button id="add-music-button">Add Music</button>
                 </div>
             </div>
@@ -83,7 +89,7 @@
             <div id="diary-controls">
                 <button id="show-calendar-events">Show Google Calendar Events</button>
                 <select id="notes-dropdown">
-                    <option value="">Select a Note</option>
+                    <option value="">Note</option>
                 </select>
             </div>
             <div id="diary-content">
@@ -92,14 +98,61 @@
         </div>
         </div>
     </div>
-    </div>
+    <!-- </div> -->
+   <section class="bottom-section">
     <div class="bottom-bar" id="bottom-bar">
         <img id="current-thumbnail" src="/styles/GoalCraft.jpg" alt="Current Music Thumbnail">
         <span id="current-music-name">No music playing</span>
-        <button id="prev-button">Previous</button>
-        <button id="play-pause-button">Play</button>
-        <button id="next-button">Next</button>
+        <button id="prev-button"><span class="material-symbols-outlined">
+            skip_previous
+            </span></button>
+        <button id="play-pause-button"><span class="material-symbols-outlined">play_circle </span></button>
+        <button id="next-button"><span class="material-symbols-outlined">
+            skip_next
+            </span></button>
     </div>
+
+   </section>
+
+<script>
+
+
+    window.addEventListener('load', function() {
+        // Animate the music section
+        const musicSection = document.getElementById('music');
+        musicSection.classList.add('animate');
+
+        // Wait 1 second and then animate the other sections in the music section
+        setTimeout(function() {
+            document.getElementById('playlist-form').classList.add('animate');
+            document.querySelector('.playlist-selector').classList.add('animate');
+            document.getElementById('playlist-videos').classList.add('animate');
+        }, 500); // 1 second delay after the music section animation
+
+        // Animate the diary section
+        const diarySection = document.getElementById('my_diary');
+        diarySection.classList.add('animate');
+
+        // Wait 1 second and then animate the other sections in the diary section
+        setTimeout(function() {
+            document.getElementById('show-calendar-events').classList.add('animate');
+            document.getElementById('notes-dropdown').classList.add('animate');
+        }, 500); // 1 second delay after the diary section animation
+    });
+
+
+    window.addEventListener('load', function() {
+        // Animate the box2-pomodoro section
+        const box2Pomodoro = document.getElementById('box2-pomodoro');
+        box2Pomodoro.classList.add('animate');
+
+        // Wait 0.5 seconds and then animate the pomodoro section
+        setTimeout(function() {
+            document.getElementById('pomodoro').classList.add('animate');
+        }, 1500); // 0.5 second delay
+    });
+</script>
+
     
     <script src="/scripts/music.js"></script>
 </body>

@@ -180,7 +180,9 @@ function addVideoListElement(container, videoUrl) {
     videoListItem.innerHTML = `
         <img src="https://img.youtube.com/vi/${videoId}/0.jpg" alt="Video Thumbnail">
         <span>${getYouTubeVideoTitle(videoUrl)}</span>
-        <button class="delete-btn" data-video-url="${videoUrl}">Delete</button>
+        <button class="delete-btn" data-video-url="${videoUrl}">
+            <span class="material-symbols-outlined">delete</span>
+        </button>
     `;
     container.appendChild(videoListItem);
 }
@@ -230,9 +232,8 @@ function playVideo(url) {
     addVideoElement(videoDisplay, url);
     updateBottomBar(url);
     isPlaying = true;
-    document.getElementById('play-pause-button').textContent = 'Pause';
+    document.getElementById('play-pause-button').innerHTML = '<span class="material-symbols-outlined">pause_circle</span>';
 }
-
 function updateBottomBar(url) {
     const videoId = getYouTubeVideoId(url);
     document.getElementById('current-thumbnail').src = `https://img.youtube.com/vi/${videoId}/0.jpg`;
@@ -248,14 +249,13 @@ function togglePlayPause() {
 }
 
 function pauseVideo() {
-    // Implementation to pause video (depends on how you handle video playing)
     const iframe = document.querySelector('#video-display iframe');
     if (iframe) {
         const iframeSrc = iframe.src;
         iframe.src = iframeSrc;  // Reloads the iframe, effectively pausing it
     }
     isPlaying = false;
-    document.getElementById('play-pause-button').textContent = 'Play';
+    document.getElementById('play-pause-button').innerHTML = '<span class="material-symbols-outlined">play_circle</span>';
 }
 
 function playPrevious() {
